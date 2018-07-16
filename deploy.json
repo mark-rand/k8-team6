@@ -1,0 +1,2698 @@
+{
+  "apiVersion": "v1",
+  "items": [
+    {
+      "apiVersion": "extensions/v1beta1",
+      "kind": "ReplicaSet",
+      "metadata": {
+        "annotations": {
+          "deployment.kubernetes.io/desired-replicas": "1",
+          "deployment.kubernetes.io/max-replicas": "2",
+          "deployment.kubernetes.io/revision": "1"
+        },
+        "creationTimestamp": "2018-07-16T09:10:18Z",
+        "generation": 1,
+        "labels": {
+          "app": "mongodb",
+          "pod-template-hash": "1577116219",
+          "release": "brazen-bobcat"
+        },
+        "name": "brazen-bobcat-mongodb-59cc55b65f",
+        "ownerReferences": [
+          {
+            "apiVersion": "extensions/v1beta1",
+            "blockOwnerDeletion": true,
+            "controller": true,
+            "kind": "Deployment",
+            "name": "brazen-bobcat-mongodb",
+            "uid": "0f85762b-88d8-11e8-aebd-0a58ac1f16cd"
+          }
+        ],
+        "resourceVersion": "1761",
+        "selfLink": "/apis/extensions/v1beta1/namespaces/default/replicasets/brazen-bobcat-mongodb-59cc55b65f",
+        "uid": "0f88060f-88d8-11e8-aebd-0a58ac1f16cd"
+      },
+      "spec": {
+        "replicas": 1,
+        "selector": {
+          "matchLabels": {
+            "app": "mongodb",
+            "pod-template-hash": "1577116219",
+            "release": "brazen-bobcat"
+          }
+        },
+        "template": {
+          "metadata": {
+            "creationTimestamp": null,
+            "labels": {
+              "app": "mongodb",
+              "pod-template-hash": "1577116219",
+              "release": "brazen-bobcat"
+            }
+          },
+          "spec": {
+            "containers": [
+              {
+                "env": [
+                  {
+                    "name": "MONGODB_ROOT_PASSWORD",
+                    "valueFrom": {
+                      "secretKeyRef": {
+                        "key": "mongodb-root-password",
+                        "name": "brazen-bobcat-mongodb"
+                      }
+                    }
+                  },
+                  {
+                    "name": "MONGODB_USERNAME"
+                  },
+                  {
+                    "name": "MONGODB_DATABASE"
+                  },
+                  {
+                    "name": "MONGODB_EXTRA_FLAGS"
+                  }
+                ],
+                "image": "docker.io/bitnami/mongodb:3.6.6-debian-9",
+                "imagePullPolicy": "Always",
+                "livenessProbe": {
+                  "exec": {
+                    "command": [
+                      "mongo",
+                      "--eval",
+                      "db.adminCommand('ping')"
+                    ]
+                  },
+                  "failureThreshold": 6,
+                  "initialDelaySeconds": 30,
+                  "periodSeconds": 10,
+                  "successThreshold": 1,
+                  "timeoutSeconds": 5
+                },
+                "name": "brazen-bobcat-mongodb",
+                "ports": [
+                  {
+                    "containerPort": 27017,
+                    "name": "mongodb",
+                    "protocol": "TCP"
+                  }
+                ],
+                "readinessProbe": {
+                  "exec": {
+                    "command": [
+                      "mongo",
+                      "--eval",
+                      "db.adminCommand('ping')"
+                    ]
+                  },
+                  "failureThreshold": 6,
+                  "initialDelaySeconds": 5,
+                  "periodSeconds": 10,
+                  "successThreshold": 1,
+                  "timeoutSeconds": 5
+                },
+                "resources": {},
+                "terminationMessagePath": "/dev/termination-log",
+                "terminationMessagePolicy": "File",
+                "volumeMounts": [
+                  {
+                    "mountPath": "/bitnami/mongodb",
+                    "name": "data"
+                  }
+                ]
+              }
+            ],
+            "dnsPolicy": "ClusterFirst",
+            "restartPolicy": "Always",
+            "schedulerName": "default-scheduler",
+            "securityContext": {},
+            "terminationGracePeriodSeconds": 30,
+            "volumes": [
+              {
+                "name": "data",
+                "persistentVolumeClaim": {
+                  "claimName": "brazen-bobcat-mongodb"
+                }
+              }
+            ]
+          }
+        }
+      },
+      "status": {
+        "availableReplicas": 1,
+        "fullyLabeledReplicas": 1,
+        "observedGeneration": 1,
+        "readyReplicas": 1,
+        "replicas": 1
+      }
+    },
+    {
+      "apiVersion": "extensions/v1beta1",
+      "kind": "ReplicaSet",
+      "metadata": {
+        "annotations": {
+          "deployment.kubernetes.io/desired-replicas": "1",
+          "deployment.kubernetes.io/max-replicas": "2",
+          "deployment.kubernetes.io/revision": "12",
+          "description": "This is the Order Capture API"
+        },
+        "creationTimestamp": "2018-07-16T10:42:25Z",
+        "generation": 2,
+        "labels": {
+          "k8s-app": "capture-order-api",
+          "pod-template-hash": "1091476796"
+        },
+        "name": "capture-order-api-54f58cbcfb",
+        "ownerReferences": [
+          {
+            "apiVersion": "extensions/v1beta1",
+            "blockOwnerDeletion": true,
+            "controller": true,
+            "kind": "Deployment",
+            "name": "capture-order-api",
+            "uid": "d8418f4a-88d9-11e8-aebd-0a58ac1f16cd"
+          }
+        ],
+        "resourceVersion": "11492",
+        "selfLink": "/apis/extensions/v1beta1/namespaces/default/replicasets/capture-order-api-54f58cbcfb",
+        "uid": "ed7b70c6-88e4-11e8-aebd-0a58ac1f16cd"
+      },
+      "spec": {
+        "replicas": 0,
+        "selector": {
+          "matchLabels": {
+            "k8s-app": "capture-order-api",
+            "pod-template-hash": "1091476796"
+          }
+        },
+        "template": {
+          "metadata": {
+            "annotations": {
+              "description": "This is the Order Capture API"
+            },
+            "creationTimestamp": null,
+            "labels": {
+              "k8s-app": "capture-order-api",
+              "pod-template-hash": "1091476796"
+            },
+            "name": "capture-order-api"
+          },
+          "spec": {
+            "containers": [
+              {
+                "env": [
+                  {
+                    "name": "TEAMNAME",
+                    "value": "team6-SKY1807"
+                  },
+                  {
+                    "name": "MONGOHOST",
+                    "value": "mongodb://orders:secret@brazen-bobcat-mongodb.default"
+                  },
+                  {
+                    "name": "RABBITMQHOST",
+                    "value": "amqp://ordermanagement:realsecure@opining-ibex-rabbitmq-ha.default:5672"
+                  }
+                ],
+                "image": "shanepeckham/captureorderack:v9",
+                "imagePullPolicy": "Always",
+                "name": "capture-order-api",
+                "resources": {},
+                "securityContext": {
+                  "privileged": false
+                },
+                "terminationMessagePath": "/dev/termination-log",
+                "terminationMessagePolicy": "File"
+              }
+            ],
+            "dnsPolicy": "ClusterFirst",
+            "restartPolicy": "Always",
+            "schedulerName": "default-scheduler",
+            "securityContext": {},
+            "terminationGracePeriodSeconds": 30
+          }
+        }
+      },
+      "status": {
+        "observedGeneration": 2,
+        "replicas": 0
+      }
+    },
+    {
+      "apiVersion": "extensions/v1beta1",
+      "kind": "ReplicaSet",
+      "metadata": {
+        "annotations": {
+          "deployment.kubernetes.io/desired-replicas": "1",
+          "deployment.kubernetes.io/max-replicas": "2",
+          "deployment.kubernetes.io/revision": "11",
+          "description": "This is the Order Capture API"
+        },
+        "creationTimestamp": "2018-07-16T10:20:20Z",
+        "generation": 2,
+        "labels": {
+          "k8s-app": "capture-order-api",
+          "pod-template-hash": "1369157972"
+        },
+        "name": "capture-order-api-57bf59cfc6",
+        "ownerReferences": [
+          {
+            "apiVersion": "extensions/v1beta1",
+            "blockOwnerDeletion": true,
+            "controller": true,
+            "kind": "Deployment",
+            "name": "capture-order-api",
+            "uid": "d8418f4a-88d9-11e8-aebd-0a58ac1f16cd"
+          }
+        ],
+        "resourceVersion": "11516",
+        "selfLink": "/apis/extensions/v1beta1/namespaces/default/replicasets/capture-order-api-57bf59cfc6",
+        "uid": "d7e1e6ad-88e1-11e8-aebd-0a58ac1f16cd"
+      },
+      "spec": {
+        "replicas": 0,
+        "selector": {
+          "matchLabels": {
+            "k8s-app": "capture-order-api",
+            "pod-template-hash": "1369157972"
+          }
+        },
+        "template": {
+          "metadata": {
+            "annotations": {
+              "description": "This is the Order Capture API"
+            },
+            "creationTimestamp": null,
+            "labels": {
+              "k8s-app": "capture-order-api",
+              "pod-template-hash": "1369157972"
+            },
+            "name": "capture-order-api"
+          },
+          "spec": {
+            "containers": [
+              {
+                "env": [
+                  {
+                    "name": "TEAMNAME",
+                    "value": "team6-SKY1807"
+                  },
+                  {
+                    "name": "MONGOHOST",
+                    "value": "mongodb://root:oMpd0JoDoW@brazen-bobcat-mongodb.default"
+                  },
+                  {
+                    "name": "RABBITMQHOST",
+                    "value": "amqp://ordermanagement:realsecure@opining-ibex-rabbitmq-ha.default:5672"
+                  }
+                ],
+                "image": "shanepeckham/captureorderack:v9",
+                "imagePullPolicy": "Always",
+                "name": "capture-order-api",
+                "resources": {},
+                "securityContext": {
+                  "privileged": false
+                },
+                "terminationMessagePath": "/dev/termination-log",
+                "terminationMessagePolicy": "File"
+              }
+            ],
+            "dnsPolicy": "ClusterFirst",
+            "restartPolicy": "Always",
+            "schedulerName": "default-scheduler",
+            "securityContext": {},
+            "terminationGracePeriodSeconds": 30
+          }
+        }
+      },
+      "status": {
+        "observedGeneration": 2,
+        "replicas": 0
+      }
+    },
+    {
+      "apiVersion": "extensions/v1beta1",
+      "kind": "ReplicaSet",
+      "metadata": {
+        "annotations": {
+          "deployment.kubernetes.io/desired-replicas": "1",
+          "deployment.kubernetes.io/max-replicas": "2",
+          "deployment.kubernetes.io/revision": "10",
+          "description": "This is the Order Capture API"
+        },
+        "creationTimestamp": "2018-07-16T10:13:25Z",
+        "generation": 2,
+        "labels": {
+          "k8s-app": "capture-order-api",
+          "pod-template-hash": "2194184798"
+        },
+        "name": "capture-order-api-65f85d8cfd",
+        "ownerReferences": [
+          {
+            "apiVersion": "extensions/v1beta1",
+            "blockOwnerDeletion": true,
+            "controller": true,
+            "kind": "Deployment",
+            "name": "capture-order-api",
+            "uid": "d8418f4a-88d9-11e8-aebd-0a58ac1f16cd"
+          }
+        ],
+        "resourceVersion": "8860",
+        "selfLink": "/apis/extensions/v1beta1/namespaces/default/replicasets/capture-order-api-65f85d8cfd",
+        "uid": "e0c0a0a5-88e0-11e8-aebd-0a58ac1f16cd"
+      },
+      "spec": {
+        "replicas": 0,
+        "selector": {
+          "matchLabels": {
+            "k8s-app": "capture-order-api",
+            "pod-template-hash": "2194184798"
+          }
+        },
+        "template": {
+          "metadata": {
+            "annotations": {
+              "description": "This is the Order Capture API"
+            },
+            "creationTimestamp": null,
+            "labels": {
+              "k8s-app": "capture-order-api",
+              "pod-template-hash": "2194184798"
+            },
+            "name": "capture-order-api"
+          },
+          "spec": {
+            "containers": [
+              {
+                "env": [
+                  {
+                    "name": "TEAMNAME",
+                    "value": "team6-SKY1807"
+                  },
+                  {
+                    "name": "MONGOHOST",
+                    "value": "mongodb://root:oMpd0JoDoW@brazen-bobcat-mongodb.default"
+                  },
+                  {
+                    "name": "RABBITMQHOST",
+                    "value": "amqp://opining-ibex-rabbitmq-ha.default:5672"
+                  }
+                ],
+                "image": "shanepeckham/captureorderack:v9",
+                "imagePullPolicy": "Always",
+                "name": "capture-order-api",
+                "resources": {},
+                "securityContext": {
+                  "privileged": false
+                },
+                "terminationMessagePath": "/dev/termination-log",
+                "terminationMessagePolicy": "File"
+              }
+            ],
+            "dnsPolicy": "ClusterFirst",
+            "restartPolicy": "Always",
+            "schedulerName": "default-scheduler",
+            "securityContext": {},
+            "terminationGracePeriodSeconds": 30
+          }
+        }
+      },
+      "status": {
+        "observedGeneration": 2,
+        "replicas": 0
+      }
+    },
+    {
+      "apiVersion": "extensions/v1beta1",
+      "kind": "ReplicaSet",
+      "metadata": {
+        "annotations": {
+          "deployment.kubernetes.io/desired-replicas": "10",
+          "deployment.kubernetes.io/max-replicas": "13",
+          "deployment.kubernetes.io/revision": "14",
+          "description": "This is the Order Capture API"
+        },
+        "creationTimestamp": "2018-07-16T13:53:21Z",
+        "generation": 16,
+        "labels": {
+          "k8s-app": "capture-order-api",
+          "pod-template-hash": "2332121700"
+        },
+        "name": "capture-order-api-6776565c44",
+        "ownerReferences": [
+          {
+            "apiVersion": "extensions/v1beta1",
+            "blockOwnerDeletion": true,
+            "controller": true,
+            "kind": "Deployment",
+            "name": "capture-order-api",
+            "uid": "d8418f4a-88d9-11e8-aebd-0a58ac1f16cd"
+          }
+        ],
+        "resourceVersion": "30535",
+        "selfLink": "/apis/extensions/v1beta1/namespaces/default/replicasets/capture-order-api-6776565c44",
+        "uid": "9a224853-88ff-11e8-aebd-0a58ac1f16cd"
+      },
+      "spec": {
+        "replicas": 0,
+        "selector": {
+          "matchLabels": {
+            "k8s-app": "capture-order-api",
+            "pod-template-hash": "2332121700"
+          }
+        },
+        "template": {
+          "metadata": {
+            "annotations": {
+              "description": "This is the Order Capture API"
+            },
+            "creationTimestamp": null,
+            "labels": {
+              "k8s-app": "capture-order-api",
+              "pod-template-hash": "2332121700"
+            },
+            "name": "capture-order-api"
+          },
+          "spec": {
+            "containers": [
+              {
+                "env": [
+                  {
+                    "name": "TEAMNAME",
+                    "value": "team6-SKY1807"
+                  },
+                  {
+                    "name": "MONGOHOST",
+                    "value": "mongodb://orders:secret@brazen-bobcat-mongodb.default/orders"
+                  },
+                  {
+                    "name": "RABBITMQHOST",
+                    "value": "amqp://ordermanagement:realsecure@opining-ibex-rabbitmq-ha.default:5672"
+                  }
+                ],
+                "image": "shanepeckham/captureorderack:v9",
+                "imagePullPolicy": "Always",
+                "name": "capture-order-api",
+                "resources": {},
+                "securityContext": {
+                  "privileged": false
+                },
+                "terminationMessagePath": "/dev/termination-log",
+                "terminationMessagePolicy": "File"
+              }
+            ],
+            "dnsPolicy": "ClusterFirst",
+            "imagePullSecrets": [
+              {
+                "name": "team-6-reg-cred"
+              }
+            ],
+            "restartPolicy": "Always",
+            "schedulerName": "default-scheduler",
+            "securityContext": {},
+            "terminationGracePeriodSeconds": 30
+          }
+        }
+      },
+      "status": {
+        "observedGeneration": 16,
+        "replicas": 0
+      }
+    },
+    {
+      "apiVersion": "extensions/v1beta1",
+      "kind": "ReplicaSet",
+      "metadata": {
+        "annotations": {
+          "deployment.kubernetes.io/desired-replicas": "1",
+          "deployment.kubernetes.io/max-replicas": "2",
+          "deployment.kubernetes.io/revision": "7",
+          "description": "This is the Order Capture API"
+        },
+        "creationTimestamp": "2018-07-16T09:49:33Z",
+        "generation": 3,
+        "labels": {
+          "k8s-app": "capture-order-api",
+          "pod-template-hash": "2546733790"
+        },
+        "name": "capture-order-api-698bc77cf4",
+        "ownerReferences": [
+          {
+            "apiVersion": "extensions/v1beta1",
+            "blockOwnerDeletion": true,
+            "controller": true,
+            "kind": "Deployment",
+            "name": "capture-order-api",
+            "uid": "d8418f4a-88d9-11e8-aebd-0a58ac1f16cd"
+          }
+        ],
+        "resourceVersion": "5416",
+        "selfLink": "/apis/extensions/v1beta1/namespaces/default/replicasets/capture-order-api-698bc77cf4",
+        "uid": "8b00bea3-88dd-11e8-aebd-0a58ac1f16cd"
+      },
+      "spec": {
+        "replicas": 0,
+        "selector": {
+          "matchLabels": {
+            "k8s-app": "capture-order-api",
+            "pod-template-hash": "2546733790"
+          }
+        },
+        "template": {
+          "metadata": {
+            "annotations": {
+              "description": "This is the Order Capture API"
+            },
+            "creationTimestamp": null,
+            "labels": {
+              "k8s-app": "capture-order-api",
+              "pod-template-hash": "2546733790"
+            },
+            "name": "capture-order-api"
+          },
+          "spec": {
+            "containers": [
+              {
+                "env": [
+                  {
+                    "name": "TEAMNAME",
+                    "value": "team6-SKY1807"
+                  },
+                  {
+                    "name": "MONGOHOST",
+                    "value": "mongodb://admin:oMpd0JoDoW@brazen-bobcat-mongodb.default"
+                  }
+                ],
+                "image": "shanepeckham/captureorderack:v9",
+                "imagePullPolicy": "Always",
+                "name": "capture-order-api",
+                "resources": {},
+                "securityContext": {
+                  "privileged": false
+                },
+                "terminationMessagePath": "/dev/termination-log",
+                "terminationMessagePolicy": "File"
+              }
+            ],
+            "dnsPolicy": "ClusterFirst",
+            "restartPolicy": "Always",
+            "schedulerName": "default-scheduler",
+            "securityContext": {},
+            "terminationGracePeriodSeconds": 30
+          }
+        }
+      },
+      "status": {
+        "observedGeneration": 3,
+        "replicas": 0
+      }
+    },
+    {
+      "apiVersion": "extensions/v1beta1",
+      "kind": "ReplicaSet",
+      "metadata": {
+        "annotations": {
+          "deployment.kubernetes.io/desired-replicas": "1",
+          "deployment.kubernetes.io/max-replicas": "2",
+          "deployment.kubernetes.io/revision": "3",
+          "description": "This is the Order Capture API"
+        },
+        "creationTimestamp": "2018-07-16T09:26:35Z",
+        "generation": 3,
+        "labels": {
+          "k8s-app": "capture-order-api",
+          "pod-template-hash": "3040384797"
+        },
+        "name": "capture-order-api-74847d8cfc",
+        "ownerReferences": [
+          {
+            "apiVersion": "extensions/v1beta1",
+            "blockOwnerDeletion": true,
+            "controller": true,
+            "kind": "Deployment",
+            "name": "capture-order-api",
+            "uid": "d8418f4a-88d9-11e8-aebd-0a58ac1f16cd"
+          }
+        ],
+        "resourceVersion": "3325",
+        "selfLink": "/apis/extensions/v1beta1/namespaces/default/replicasets/capture-order-api-74847d8cfc",
+        "uid": "5580a619-88da-11e8-aebd-0a58ac1f16cd"
+      },
+      "spec": {
+        "replicas": 0,
+        "selector": {
+          "matchLabels": {
+            "k8s-app": "capture-order-api",
+            "pod-template-hash": "3040384797"
+          }
+        },
+        "template": {
+          "metadata": {
+            "annotations": {
+              "description": "This is the Order Capture API"
+            },
+            "creationTimestamp": null,
+            "labels": {
+              "k8s-app": "capture-order-api",
+              "pod-template-hash": "3040384797"
+            },
+            "name": "capture-order-api"
+          },
+          "spec": {
+            "containers": [
+              {
+                "env": [
+                  {
+                    "name": "TEAMNAME",
+                    "value": "team6-SKY1807"
+                  },
+                  {
+                    "name": "MONGOHOST",
+                    "value": "mongodb://brazen-bobcat-mongodb.default"
+                  }
+                ],
+                "image": "shanepeckham/captureorderack",
+                "imagePullPolicy": "Always",
+                "name": "capture-order-api",
+                "resources": {},
+                "securityContext": {
+                  "privileged": false
+                },
+                "terminationMessagePath": "/dev/termination-log",
+                "terminationMessagePolicy": "File"
+              }
+            ],
+            "dnsPolicy": "ClusterFirst",
+            "restartPolicy": "Always",
+            "schedulerName": "default-scheduler",
+            "securityContext": {},
+            "terminationGracePeriodSeconds": 30
+          }
+        }
+      },
+      "status": {
+        "observedGeneration": 3,
+        "replicas": 0
+      }
+    },
+    {
+      "apiVersion": "extensions/v1beta1",
+      "kind": "ReplicaSet",
+      "metadata": {
+        "annotations": {
+          "deployment.kubernetes.io/desired-replicas": "1",
+          "deployment.kubernetes.io/max-replicas": "2",
+          "deployment.kubernetes.io/revision": "9",
+          "description": "This is the Order Capture API"
+        },
+        "creationTimestamp": "2018-07-16T10:10:46Z",
+        "generation": 2,
+        "labels": {
+          "k8s-app": "capture-order-api",
+          "pod-template-hash": "3487408842"
+        },
+        "name": "capture-order-api-78dc84dd86",
+        "ownerReferences": [
+          {
+            "apiVersion": "extensions/v1beta1",
+            "blockOwnerDeletion": true,
+            "controller": true,
+            "kind": "Deployment",
+            "name": "capture-order-api",
+            "uid": "d8418f4a-88d9-11e8-aebd-0a58ac1f16cd"
+          }
+        ],
+        "resourceVersion": "8116",
+        "selfLink": "/apis/extensions/v1beta1/namespaces/default/replicasets/capture-order-api-78dc84dd86",
+        "uid": "81d469a2-88e0-11e8-aebd-0a58ac1f16cd"
+      },
+      "spec": {
+        "replicas": 0,
+        "selector": {
+          "matchLabels": {
+            "k8s-app": "capture-order-api",
+            "pod-template-hash": "3487408842"
+          }
+        },
+        "template": {
+          "metadata": {
+            "annotations": {
+              "description": "This is the Order Capture API"
+            },
+            "creationTimestamp": null,
+            "labels": {
+              "k8s-app": "capture-order-api",
+              "pod-template-hash": "3487408842"
+            },
+            "name": "capture-order-api"
+          },
+          "spec": {
+            "containers": [
+              {
+                "env": [
+                  {
+                    "name": "TEAMNAME",
+                    "value": "team6-SKY1807"
+                  },
+                  {
+                    "name": "MONGOHOST",
+                    "value": "mongodb://root:oMpd0JoDoW@brazen-bobcat-mongodb.default"
+                  },
+                  {
+                    "name": "RABBITMQHOST",
+                    "value": "amqp://rabbitmq-ha.default:5672"
+                  }
+                ],
+                "image": "shanepeckham/captureorderack:v9",
+                "imagePullPolicy": "Always",
+                "name": "capture-order-api",
+                "resources": {},
+                "securityContext": {
+                  "privileged": false
+                },
+                "terminationMessagePath": "/dev/termination-log",
+                "terminationMessagePolicy": "File"
+              }
+            ],
+            "dnsPolicy": "ClusterFirst",
+            "restartPolicy": "Always",
+            "schedulerName": "default-scheduler",
+            "securityContext": {},
+            "terminationGracePeriodSeconds": 30
+          }
+        }
+      },
+      "status": {
+        "observedGeneration": 2,
+        "replicas": 0
+      }
+    },
+    {
+      "apiVersion": "extensions/v1beta1",
+      "kind": "ReplicaSet",
+      "metadata": {
+        "annotations": {
+          "deployment.kubernetes.io/desired-replicas": "10",
+          "deployment.kubernetes.io/max-replicas": "13",
+          "deployment.kubernetes.io/revision": "13",
+          "description": "This is the Order Capture API"
+        },
+        "creationTimestamp": "2018-07-16T10:46:21Z",
+        "generation": 14,
+        "labels": {
+          "k8s-app": "capture-order-api",
+          "pod-template-hash": "3565749112"
+        },
+        "name": "capture-order-api-79b9c8f556",
+        "namespace": "$NAMESPACE",
+        "ownerReferences": [
+          {
+            "apiVersion": "extensions/v1beta1",
+            "blockOwnerDeletion": true,
+            "controller": true,
+            "kind": "Deployment",
+            "name": "capture-order-api",
+            "uid": "d8418f4a-88d9-11e8-aebd-0a58ac1f16cd"
+          }
+        ],
+        "resourceVersion": "30023",
+        "selfLink": "/apis/extensions/v1beta1/namespaces/default/replicasets/capture-order-api-79b9c8f556",
+        "uid": "7a14158f-88e5-11e8-aebd-0a58ac1f16cd"
+      },
+      "spec": {
+        "replicas": 0,
+        "selector": {
+          "matchLabels": {
+            "k8s-app": "capture-order-api",
+            "pod-template-hash": "3565749112"
+          }
+        },
+        "template": {
+          "metadata": {
+            "annotations": {
+              "description": "This is the Order Capture API"
+            },
+            "creationTimestamp": null,
+            "labels": {
+              "k8s-app": "capture-order-api",
+              "pod-template-hash": "3565749112"
+            },
+            "name": "capture-order-api"
+          },
+          "spec": {
+            "containers": [
+              {
+                "env": [
+                  {
+                    "name": "TEAMNAME",
+                    "value": "team6-SKY1807"
+                  },
+                  {
+                    "name": "MONGOHOST",
+                    "value": "mongodb://orders:secret@brazen-bobcat-mongodb.default/orders"
+                  },
+                  {
+                    "name": "RABBITMQHOST",
+                    "value": "amqp://ordermanagement:realsecure@opining-ibex-rabbitmq-ha.default:5672"
+                  }
+                ],
+                "image": "shanepeckham/captureorderack:v9",
+                "imagePullPolicy": "Always",
+                "name": "capture-order-api",
+                "resources": {},
+                "securityContext": {
+                  "privileged": false
+                },
+                "terminationMessagePath": "/dev/termination-log",
+                "terminationMessagePolicy": "File"
+              }
+            ],
+            "dnsPolicy": "ClusterFirst",
+            "restartPolicy": "Always",
+            "schedulerName": "default-scheduler",
+            "securityContext": {},
+            "terminationGracePeriodSeconds": 30
+          }
+        }
+      },
+      "status": {
+        "observedGeneration": 14,
+        "replicas": 0
+      }
+    },
+    {
+      "apiVersion": "extensions/v1beta1",
+      "kind": "ReplicaSet",
+      "metadata": {
+        "annotations": {
+          "deployment.kubernetes.io/desired-replicas": "1",
+          "deployment.kubernetes.io/max-replicas": "2",
+          "deployment.kubernetes.io/revision": "8",
+          "deployment.kubernetes.io/revision-history": "5",
+          "description": "This is the Order Capture API"
+        },
+        "creationTimestamp": "2018-07-16T09:47:33Z",
+        "generation": 5,
+        "labels": {
+          "k8s-app": "capture-order-api",
+          "pod-template-hash": "3708376220"
+        },
+        "name": "capture-order-api-7c4d7cb664",
+        "namespace": "$NAMESPACE",
+        "ownerReferences": [
+          {
+            "apiVersion": "extensions/v1beta1",
+            "blockOwnerDeletion": true,
+            "controller": true,
+            "kind": "Deployment",
+            "name": "capture-order-api",
+            "uid": "d8418f4a-88d9-11e8-aebd-0a58ac1f16cd"
+          }
+        ],
+        "resourceVersion": "7834",
+        "selfLink": "/apis/extensions/v1beta1/namespaces/default/replicasets/capture-order-api-7c4d7cb664",
+        "uid": "4394286b-88dd-11e8-aebd-0a58ac1f16cd"
+      },
+      "spec": {
+        "replicas": 0,
+        "selector": {
+          "matchLabels": {
+            "k8s-app": "capture-order-api",
+            "pod-template-hash": "3708376220"
+          }
+        },
+        "template": {
+          "metadata": {
+            "annotations": {
+              "description": "This is the Order Capture API"
+            },
+            "creationTimestamp": null,
+            "labels": {
+              "k8s-app": "capture-order-api",
+              "pod-template-hash": "3708376220"
+            },
+            "name": "capture-order-api"
+          },
+          "spec": {
+            "containers": [
+              {
+                "env": [
+                  {
+                    "name": "TEAMNAME",
+                    "value": "team6-SKY1807"
+                  },
+                  {
+                    "name": "MONGOHOST",
+                    "value": "mongodb://root:oMpd0JoDoW@brazen-bobcat-mongodb.default"
+                  }
+                ],
+                "image": "shanepeckham/captureorderack:v9",
+                "imagePullPolicy": "Always",
+                "name": "capture-order-api",
+                "resources": {},
+                "securityContext": {
+                  "privileged": false
+                },
+                "terminationMessagePath": "/dev/termination-log",
+                "terminationMessagePolicy": "File"
+              }
+            ],
+            "dnsPolicy": "ClusterFirst",
+            "restartPolicy": "Always",
+            "schedulerName": "default-scheduler",
+            "securityContext": {},
+            "terminationGracePeriodSeconds": 30
+          }
+        }
+      },
+      "status": {
+        "observedGeneration": 5,
+        "replicas": 0
+      }
+    },
+    {
+      "apiVersion": "extensions/v1beta1",
+      "kind": "ReplicaSet",
+      "metadata": {
+        "annotations": {
+          "deployment.kubernetes.io/desired-replicas": "1",
+          "deployment.kubernetes.io/max-replicas": "2",
+          "deployment.kubernetes.io/revision": "6",
+          "description": "This is the Order Capture API"
+        },
+        "creationTimestamp": "2018-07-16T09:48:51Z",
+        "generation": 4,
+        "labels": {
+          "k8s-app": "capture-order-api",
+          "pod-template-hash": "4113396223"
+        },
+        "name": "capture-order-api-85577fb667",
+        "namespace": "$NAMESPACE",
+        "ownerReferences": [
+          {
+            "apiVersion": "extensions/v1beta1",
+            "blockOwnerDeletion": true,
+            "controller": true,
+            "kind": "Deployment",
+            "name": "capture-order-api",
+            "uid": "d8418f4a-88d9-11e8-aebd-0a58ac1f16cd"
+          }
+        ],
+        "resourceVersion": "5323",
+        "selfLink": "/apis/extensions/v1beta1/namespaces/default/replicasets/capture-order-api-85577fb667",
+        "uid": "720ab0ab-88dd-11e8-aebd-0a58ac1f16cd"
+      },
+      "spec": {
+        "replicas": 0,
+        "selector": {
+          "matchLabels": {
+            "k8s-app": "capture-order-api",
+            "pod-template-hash": "4113396223"
+          }
+        },
+        "template": {
+          "metadata": {
+            "annotations": {
+              "description": "This is the Order Capture API"
+            },
+            "creationTimestamp": null,
+            "labels": {
+              "k8s-app": "capture-order-api",
+              "pod-template-hash": "4113396223"
+            },
+            "name": "capture-order-api"
+          },
+          "spec": {
+            "containers": [
+              {
+                "env": [
+                  {
+                    "name": "TEAMNAME",
+                    "value": "team6-SKY1807"
+                  },
+                  {
+                    "name": "MONGOHOST",
+                    "value": "mongodb://root:oMpd0JoDoW@brazen-bobcat-mongodb.default"
+                  }
+                ],
+                "image": "shanepeckham/captureorderack:v9",
+                "imagePullPolicy": "Always",
+                "name": "capture-order-api",
+                "resources": {},
+                "securityContext": {
+                  "privileged": false
+                },
+                "terminationMessagePath": "/dev/termination-log",
+                "terminationMessagePolicy": "File"
+              }
+            ],
+            "dnsPolicy": "ClusterFirst",
+            "restartPolicy": "Always",
+            "schedulerName": "default-scheduler",
+            "securityContext": {},
+            "terminationGracePeriodSeconds": 30
+          }
+        }
+      },
+      "status": {
+        "observedGeneration": 4,
+        "replicas": 0
+      }
+    },
+    {
+      "apiVersion": "extensions/v1beta1",
+      "kind": "ReplicaSet",
+      "metadata": {
+        "annotations": {
+          "deployment.kubernetes.io/desired-replicas": "10",
+          "deployment.kubernetes.io/max-replicas": "13",
+          "deployment.kubernetes.io/revision": "15",
+          "description": "This is the Order Capture API"
+        },
+        "creationTimestamp": "2018-07-16T13:55:50Z",
+        "generation": 7,
+        "labels": {
+          "k8s-app": "capture-order-api",
+          "pod-template-hash": "920577166"
+        },
+        "name": "capture-order-api-f649cc5bb",
+        "namespace": "$NAMESPACE",
+        "ownerReferences": [
+          {
+            "apiVersion": "extensions/v1beta1",
+            "blockOwnerDeletion": true,
+            "controller": true,
+            "kind": "Deployment",
+            "name": "capture-order-api",
+            "uid": "d8418f4a-88d9-11e8-aebd-0a58ac1f16cd"
+          }
+        ],
+        "resourceVersion": "30565",
+        "selfLink": "/apis/extensions/v1beta1/namespaces/default/replicasets/capture-order-api-f649cc5bb",
+        "uid": "f2d7acb2-88ff-11e8-aebd-0a58ac1f16cd"
+      },
+      "spec": {
+        "replicas": 10,
+        "selector": {
+          "matchLabels": {
+            "k8s-app": "capture-order-api",
+            "pod-template-hash": "920577166"
+          }
+        },
+        "template": {
+          "metadata": {
+            "annotations": {
+              "description": "This is the Order Capture API"
+            },
+            "creationTimestamp": null,
+            "labels": {
+              "k8s-app": "capture-order-api",
+              "pod-template-hash": "920577166"
+            },
+            "name": "capture-order-api"
+          },
+          "spec": {
+            "containers": [
+              {
+                "env": [
+                  {
+                    "name": "TEAMNAME",
+                    "value": "team6-SKY1807"
+                  },
+                  {
+                    "name": "MONGOHOST",
+                    "value": "mongodb://orders:secret@brazen-bobcat-mongodb.default/orders"
+                  },
+                  {
+                    "name": "RABBITMQHOST",
+                    "value": "amqp://ordermanagement:realsecure@opining-ibex-rabbitmq-ha.default:5672"
+                  }
+                ],
+                "image": "team6sky1807registry.azurecr.io/captureorderack",
+                "imagePullPolicy": "Always",
+                "name": "capture-order-api",
+                "resources": {},
+                "securityContext": {
+                  "privileged": false
+                },
+                "terminationMessagePath": "/dev/termination-log",
+                "terminationMessagePolicy": "File"
+              }
+            ],
+            "dnsPolicy": "ClusterFirst",
+            "imagePullSecrets": [
+              {
+                "name": "team-6-reg-cred"
+              }
+            ],
+            "restartPolicy": "Always",
+            "schedulerName": "default-scheduler",
+            "securityContext": {},
+            "terminationGracePeriodSeconds": 30
+          }
+        }
+      },
+      "status": {
+        "availableReplicas": 10,
+        "fullyLabeledReplicas": 10,
+        "observedGeneration": 7,
+        "readyReplicas": 10,
+        "replicas": 10
+      }
+    },
+    {
+      "apiVersion": "extensions/v1beta1",
+      "kind": "ReplicaSet",
+      "metadata": {
+        "annotations": {
+          "deployment.kubernetes.io/desired-replicas": "1",
+          "deployment.kubernetes.io/max-replicas": "2",
+          "deployment.kubernetes.io/revision": "2"
+        },
+        "creationTimestamp": "2018-07-16T14:11:39Z",
+        "generation": 2,
+        "labels": {
+          "k8s-app": "eventlistener-eventhub",
+          "pod-template-hash": "3242990381"
+        },
+        "name": "eventlistener-eventhub-7686ff47d5",
+        "namespace": "$NAMESPACE",
+        "ownerReferences": [
+          {
+            "apiVersion": "extensions/v1beta1",
+            "blockOwnerDeletion": true,
+            "controller": true,
+            "kind": "Deployment",
+            "name": "eventlistener-eventhub",
+            "uid": "13cfa281-8902-11e8-aebd-0a58ac1f16cd"
+          }
+        ],
+        "resourceVersion": "33157",
+        "selfLink": "/apis/extensions/v1beta1/namespaces/default/replicasets/eventlistener-eventhub-7686ff47d5",
+        "uid": "283964a3-8902-11e8-aebd-0a58ac1f16cd"
+      },
+      "spec": {
+        "replicas": 0,
+        "selector": {
+          "matchLabels": {
+            "k8s-app": "eventlistener-eventhub",
+            "pod-template-hash": "3242990381"
+          }
+        },
+        "template": {
+          "metadata": {
+            "creationTimestamp": null,
+            "labels": {
+              "k8s-app": "eventlistener-eventhub",
+              "pod-template-hash": "3242990381"
+            },
+            "name": "eventlistener-eventhub"
+          },
+          "spec": {
+            "containers": [
+              {
+                "env": [
+                  {
+                    "name": "EVENTHUBCONNSTRING",
+                    "value": "Endpoint=sb://k8s-challenge-sky-team6.servicebus.windows.net/;SharedAccessKeyName=SendListenKey;SharedAccessKey=P8KeegRQF4wPTVbghSK0hbiNW5Y3T0AUGTgzISss2Yk="
+                  },
+                  {
+                    "name": "EVENTHUBPATH",
+                    "value": "k8s-event-hub"
+                  },
+                  {
+                    "name": "TEAMNAME",
+                    "value": "team6-SKY1807"
+                  },
+                  {
+                    "name": "PROCESSENDPOINT",
+                    "value": "http://order-fulfill-api.default/v1/order"
+                  }
+                ],
+                "image": "shanepeckham/eventhublistenerack:v8",
+                "imagePullPolicy": "Always",
+                "name": "eventlistener-eventhub",
+                "resources": {},
+                "securityContext": {
+                  "privileged": false
+                },
+                "terminationMessagePath": "/dev/termination-log",
+                "terminationMessagePolicy": "File"
+              }
+            ],
+            "dnsPolicy": "ClusterFirst",
+            "restartPolicy": "Always",
+            "schedulerName": "default-scheduler",
+            "securityContext": {},
+            "terminationGracePeriodSeconds": 30
+          }
+        }
+      },
+      "status": {
+        "observedGeneration": 2,
+        "replicas": 0
+      }
+    },
+    {
+      "apiVersion": "extensions/v1beta1",
+      "kind": "ReplicaSet",
+      "metadata": {
+        "annotations": {
+          "deployment.kubernetes.io/desired-replicas": "1",
+          "deployment.kubernetes.io/max-replicas": "2",
+          "deployment.kubernetes.io/revision": "3"
+        },
+        "creationTimestamp": "2018-07-16T14:19:50Z",
+        "generation": 1,
+        "labels": {
+          "k8s-app": "eventlistener-eventhub",
+          "pod-template-hash": "4017647278"
+        },
+        "name": "eventlistener-eventhub-845cb8c6cd",
+        "namespace": "$NAMESPACE",
+        "ownerReferences": [
+          {
+            "apiVersion": "extensions/v1beta1",
+            "blockOwnerDeletion": true,
+            "controller": true,
+            "kind": "Deployment",
+            "name": "eventlistener-eventhub",
+            "uid": "13cfa281-8902-11e8-aebd-0a58ac1f16cd"
+          }
+        ],
+        "resourceVersion": "33149",
+        "selfLink": "/apis/extensions/v1beta1/namespaces/default/replicasets/eventlistener-eventhub-845cb8c6cd",
+        "uid": "4d0191dd-8903-11e8-aebd-0a58ac1f16cd"
+      },
+      "spec": {
+        "replicas": 1,
+        "selector": {
+          "matchLabels": {
+            "k8s-app": "eventlistener-eventhub",
+            "pod-template-hash": "4017647278"
+          }
+        },
+        "template": {
+          "metadata": {
+            "creationTimestamp": null,
+            "labels": {
+              "k8s-app": "eventlistener-eventhub",
+              "pod-template-hash": "4017647278"
+            },
+            "name": "eventlistener-eventhub"
+          },
+          "spec": {
+            "containers": [
+              {
+                "env": [
+                  {
+                    "name": "EVENTHUBCONNSTRING",
+                    "value": "Endpoint=sb://k8s-challenge-sky-team6.servicebus.windows.net/;SharedAccessKeyName=SendListenKey;SharedAccessKey=P8KeegRQF4wPTVbghSK0hbiNW5Y3T0AUGTgzISss2Yk="
+                  },
+                  {
+                    "name": "EVENTHUBPATH",
+                    "value": "k8s-event-hub"
+                  },
+                  {
+                    "name": "TEAMNAME",
+                    "value": "team6-SKY1807"
+                  },
+                  {
+                    "name": "PROCESSENDPOINT",
+                    "value": "http://order-fulfill-api.default/v1/order"
+                  },
+                  {
+                    "name": "PARTITIONKEY",
+                    "value": "[0,1,2]"
+                  }
+                ],
+                "image": "shanepeckham/eventhublistenerack:v8",
+                "imagePullPolicy": "Always",
+                "name": "eventlistener-eventhub",
+                "resources": {},
+                "securityContext": {
+                  "privileged": false
+                },
+                "terminationMessagePath": "/dev/termination-log",
+                "terminationMessagePolicy": "File"
+              }
+            ],
+            "dnsPolicy": "ClusterFirst",
+            "restartPolicy": "Always",
+            "schedulerName": "default-scheduler",
+            "securityContext": {},
+            "terminationGracePeriodSeconds": 30
+          }
+        }
+      },
+      "status": {
+        "availableReplicas": 1,
+        "fullyLabeledReplicas": 1,
+        "observedGeneration": 1,
+        "readyReplicas": 1,
+        "replicas": 1
+      }
+    },
+    {
+      "apiVersion": "extensions/v1beta1",
+      "kind": "ReplicaSet",
+      "metadata": {
+        "annotations": {
+          "deployment.kubernetes.io/desired-replicas": "1",
+          "deployment.kubernetes.io/max-replicas": "2",
+          "deployment.kubernetes.io/revision": "1"
+        },
+        "creationTimestamp": "2018-07-16T14:11:05Z",
+        "generation": 2,
+        "labels": {
+          "k8s-app": "eventlistener-eventhub",
+          "pod-template-hash": "4067218763"
+        },
+        "name": "eventlistener-eventhub-84bc65dcb7",
+        "namespace": "$NAMESPACE",
+        "ownerReferences": [
+          {
+            "apiVersion": "extensions/v1beta1",
+            "blockOwnerDeletion": true,
+            "controller": true,
+            "kind": "Deployment",
+            "name": "eventlistener-eventhub",
+            "uid": "13cfa281-8902-11e8-aebd-0a58ac1f16cd"
+          }
+        ],
+        "resourceVersion": "32388",
+        "selfLink": "/apis/extensions/v1beta1/namespaces/default/replicasets/eventlistener-eventhub-84bc65dcb7",
+        "uid": "13d419eb-8902-11e8-aebd-0a58ac1f16cd"
+      },
+      "spec": {
+        "replicas": 0,
+        "selector": {
+          "matchLabels": {
+            "k8s-app": "eventlistener-eventhub",
+            "pod-template-hash": "4067218763"
+          }
+        },
+        "template": {
+          "metadata": {
+            "creationTimestamp": null,
+            "labels": {
+              "k8s-app": "eventlistener-eventhub",
+              "pod-template-hash": "4067218763"
+            },
+            "name": "eventlistener-eventhub"
+          },
+          "spec": {
+            "containers": [
+              {
+                "env": [
+                  {
+                    "name": "EVENTHUBCONNSTRING",
+                    "value": "Endpoint=sb://k8s-challenge-sky-team6.servicebus.windows.net/;SharedAccessKeyName=SendListenKey;SharedAccessKey=P8KeegRQF4wPTVbghSK0hbiNW5Y3T0AUGTgzISss2Yk="
+                  },
+                  {
+                    "name": "EVENTHUBPATH",
+                    "value": "k8s-event-hub"
+                  },
+                  {
+                    "name": "TEAMNAME",
+                    "value": "team6-SKY1807"
+                  },
+                  {
+                    "name": "PROCESSENDPOINT",
+                    "value": "http://order-fulfill-api.default/v1/order"
+                  }
+                ],
+                "image": "shanepeckham/eventhublistenerack",
+                "imagePullPolicy": "Always",
+                "name": "eventlistener-eventhub",
+                "resources": {},
+                "securityContext": {
+                  "privileged": false
+                },
+                "terminationMessagePath": "/dev/termination-log",
+                "terminationMessagePolicy": "File"
+              }
+            ],
+            "dnsPolicy": "ClusterFirst",
+            "restartPolicy": "Always",
+            "schedulerName": "default-scheduler",
+            "securityContext": {},
+            "terminationGracePeriodSeconds": 30
+          }
+        }
+      },
+      "status": {
+        "observedGeneration": 2,
+        "replicas": 0
+      }
+    },
+    {
+      "apiVersion": "extensions/v1beta1",
+      "kind": "ReplicaSet",
+      "metadata": {
+        "annotations": {
+          "deployment.kubernetes.io/desired-replicas": "1",
+          "deployment.kubernetes.io/max-replicas": "2",
+          "deployment.kubernetes.io/revision": "1"
+        },
+        "creationTimestamp": "2018-07-16T14:20:50Z",
+        "generation": 1,
+        "labels": {
+          "app": "jenkins",
+          "chart": "jenkins-0.16.6",
+          "component": "jenkins-jenkins-master",
+          "heritage": "Tiller",
+          "pod-template-hash": "2889603672",
+          "release": "jenkins"
+        },
+        "name": "jenkins-6ddfb47bc6",
+        "namespace": "$NAMESPACE",
+        "ownerReferences": [
+          {
+            "apiVersion": "extensions/v1beta1",
+            "blockOwnerDeletion": true,
+            "controller": true,
+            "kind": "Deployment",
+            "name": "jenkins",
+            "uid": "70aa320b-8903-11e8-aebd-0a58ac1f16cd"
+          }
+        ],
+        "resourceVersion": "33787",
+        "selfLink": "/apis/extensions/v1beta1/namespaces/default/replicasets/jenkins-6ddfb47bc6",
+        "uid": "70ac77a7-8903-11e8-aebd-0a58ac1f16cd"
+      },
+      "spec": {
+        "replicas": 1,
+        "selector": {
+          "matchLabels": {
+            "component": "jenkins-jenkins-master",
+            "pod-template-hash": "2889603672"
+          }
+        },
+        "template": {
+          "metadata": {
+            "annotations": {
+              "checksum/config": "4a3a8c937b307bfb3c6b9d1f2e4b6b72197a0cbe776156d19ff7fa08dd8cefc4"
+            },
+            "creationTimestamp": null,
+            "labels": {
+              "app": "jenkins",
+              "chart": "jenkins-0.16.6",
+              "component": "jenkins-jenkins-master",
+              "heritage": "Tiller",
+              "pod-template-hash": "2889603672",
+              "release": "jenkins"
+            }
+          },
+          "spec": {
+            "containers": [
+              {
+                "args": [
+                  "--argumentsRealm.passwd.$(ADMIN_USER)=$(ADMIN_PASSWORD)",
+                  "--argumentsRealm.roles.$(ADMIN_USER)=admin"
+                ],
+                "env": [
+                  {
+                    "name": "JAVA_OPTS"
+                  },
+                  {
+                    "name": "JENKINS_OPTS"
+                  },
+                  {
+                    "name": "ADMIN_PASSWORD",
+                    "valueFrom": {
+                      "secretKeyRef": {
+                        "key": "jenkins-admin-password",
+                        "name": "jenkins"
+                      }
+                    }
+                  },
+                  {
+                    "name": "ADMIN_USER",
+                    "valueFrom": {
+                      "secretKeyRef": {
+                        "key": "jenkins-admin-user",
+                        "name": "jenkins"
+                      }
+                    }
+                  }
+                ],
+                "image": "jenkins/jenkins:lts",
+                "imagePullPolicy": "Always",
+                "livenessProbe": {
+                  "failureThreshold": 12,
+                  "httpGet": {
+                    "path": "/login",
+                    "port": "http",
+                    "scheme": "HTTP"
+                  },
+                  "initialDelaySeconds": 90,
+                  "periodSeconds": 10,
+                  "successThreshold": 1,
+                  "timeoutSeconds": 5
+                },
+                "name": "jenkins",
+                "ports": [
+                  {
+                    "containerPort": 8080,
+                    "name": "http",
+                    "protocol": "TCP"
+                  },
+                  {
+                    "containerPort": 50000,
+                    "name": "slavelistener",
+                    "protocol": "TCP"
+                  }
+                ],
+                "readinessProbe": {
+                  "failureThreshold": 3,
+                  "httpGet": {
+                    "path": "/login",
+                    "port": "http",
+                    "scheme": "HTTP"
+                  },
+                  "initialDelaySeconds": 60,
+                  "periodSeconds": 10,
+                  "successThreshold": 1,
+                  "timeoutSeconds": 1
+                },
+                "resources": {
+                  "limits": {
+                    "cpu": "2",
+                    "memory": "2Gi"
+                  },
+                  "requests": {
+                    "cpu": "50m",
+                    "memory": "256Mi"
+                  }
+                },
+                "terminationMessagePath": "/dev/termination-log",
+                "terminationMessagePolicy": "File",
+                "volumeMounts": [
+                  {
+                    "mountPath": "/var/jenkins_home",
+                    "name": "jenkins-home"
+                  },
+                  {
+                    "mountPath": "/var/jenkins_config",
+                    "name": "jenkins-config",
+                    "readOnly": true
+                  },
+                  {
+                    "mountPath": "/usr/share/jenkins/ref/plugins/",
+                    "name": "plugin-dir"
+                  },
+                  {
+                    "mountPath": "/usr/share/jenkins/ref/secrets/",
+                    "name": "secrets-dir"
+                  }
+                ]
+              }
+            ],
+            "dnsPolicy": "ClusterFirst",
+            "initContainers": [
+              {
+                "command": [
+                  "sh",
+                  "/var/jenkins_config/apply_config.sh"
+                ],
+                "image": "jenkins/jenkins:lts",
+                "imagePullPolicy": "Always",
+                "name": "copy-default-config",
+                "resources": {},
+                "terminationMessagePath": "/dev/termination-log",
+                "terminationMessagePolicy": "File",
+                "volumeMounts": [
+                  {
+                    "mountPath": "/var/jenkins_home",
+                    "name": "jenkins-home"
+                  },
+                  {
+                    "mountPath": "/var/jenkins_config",
+                    "name": "jenkins-config"
+                  },
+                  {
+                    "mountPath": "/var/jenkins_plugins",
+                    "name": "plugin-dir"
+                  },
+                  {
+                    "mountPath": "/usr/share/jenkins/ref/secrets/",
+                    "name": "secrets-dir"
+                  }
+                ]
+              }
+            ],
+            "restartPolicy": "Always",
+            "schedulerName": "default-scheduler",
+            "securityContext": {
+              "runAsUser": 0
+            },
+            "serviceAccount": "default",
+            "serviceAccountName": "default",
+            "terminationGracePeriodSeconds": 30,
+            "volumes": [
+              {
+                "configMap": {
+                  "defaultMode": 420,
+                  "name": "jenkins"
+                },
+                "name": "jenkins-config"
+              },
+              {
+                "emptyDir": {},
+                "name": "plugin-dir"
+              },
+              {
+                "emptyDir": {},
+                "name": "secrets-dir"
+              },
+              {
+                "name": "jenkins-home",
+                "persistentVolumeClaim": {
+                  "claimName": "jenkins"
+                }
+              }
+            ]
+          }
+        }
+      },
+      "status": {
+        "availableReplicas": 1,
+        "fullyLabeledReplicas": 1,
+        "observedGeneration": 1,
+        "readyReplicas": 1,
+        "replicas": 1
+      }
+    },
+    {
+      "apiVersion": "extensions/v1beta1",
+      "kind": "ReplicaSet",
+      "metadata": {
+        "annotations": {
+          "deployment.kubernetes.io/desired-replicas": "1",
+          "deployment.kubernetes.io/max-replicas": "2",
+          "deployment.kubernetes.io/revision": "1"
+        },
+        "creationTimestamp": "2018-07-16T12:33:15Z",
+        "generation": 1,
+        "labels": {
+          "pod-template-hash": "3666609880",
+          "run": "load-generator"
+        },
+        "name": "load-generator-7bbbb4fdd4",
+        "namespace": "$NAMESPACE",
+        "ownerReferences": [
+          {
+            "apiVersion": "extensions/v1beta1",
+            "blockOwnerDeletion": true,
+            "controller": true,
+            "kind": "Deployment",
+            "name": "load-generator",
+            "uid": "697a212c-88f4-11e8-aebd-0a58ac1f16cd"
+          }
+        ],
+        "resourceVersion": "23051",
+        "selfLink": "/apis/extensions/v1beta1/namespaces/default/replicasets/load-generator-7bbbb4fdd4",
+        "uid": "697df1f8-88f4-11e8-aebd-0a58ac1f16cd"
+      },
+      "spec": {
+        "replicas": 1,
+        "selector": {
+          "matchLabels": {
+            "pod-template-hash": "3666609880",
+            "run": "load-generator"
+          }
+        },
+        "template": {
+          "metadata": {
+            "creationTimestamp": null,
+            "labels": {
+              "pod-template-hash": "3666609880",
+              "run": "load-generator"
+            }
+          },
+          "spec": {
+            "containers": [
+              {
+                "args": [
+                  "/bin/sh"
+                ],
+                "image": "busybox",
+                "imagePullPolicy": "Always",
+                "name": "load-generator",
+                "resources": {},
+                "stdin": true,
+                "terminationMessagePath": "/dev/termination-log",
+                "terminationMessagePolicy": "File",
+                "tty": true
+              }
+            ],
+            "dnsPolicy": "ClusterFirst",
+            "restartPolicy": "Always",
+            "schedulerName": "default-scheduler",
+            "securityContext": {},
+            "terminationGracePeriodSeconds": 30
+          }
+        }
+      },
+      "status": {
+        "availableReplicas": 1,
+        "fullyLabeledReplicas": 1,
+        "observedGeneration": 1,
+        "readyReplicas": 1,
+        "replicas": 1
+      }
+    },
+    {
+      "apiVersion": "extensions/v1beta1",
+      "kind": "ReplicaSet",
+      "metadata": {
+        "annotations": {
+          "deployment.kubernetes.io/desired-replicas": "1",
+          "deployment.kubernetes.io/max-replicas": "2",
+          "deployment.kubernetes.io/revision": "6",
+          "deployment.kubernetes.io/revision-history": "2,4",
+          "description": "This is the Order Fulfill API"
+        },
+        "creationTimestamp": "2018-07-16T11:10:54Z",
+        "generation": 2,
+        "labels": {
+          "k8s-app": "order-fulfill-api",
+          "pod-template-hash": "1640257209"
+        },
+        "name": "order-fulfill-api-5b8469c64f",
+        "namespace": "$NAMESPACE",
+        "ownerReferences": [
+          {
+            "apiVersion": "extensions/v1beta1",
+            "blockOwnerDeletion": true,
+            "controller": true,
+            "kind": "Deployment",
+            "name": "order-fulfill-api",
+            "uid": "ba34a861-88e7-11e8-aebd-0a58ac1f16cd"
+          }
+        ],
+        "resourceVersion": "25558",
+        "selfLink": "/apis/extensions/v1beta1/namespaces/default/replicasets/order-fulfill-api-5b8469c64f",
+        "uid": "e86838dd-88e8-11e8-aebd-0a58ac1f16cd"
+      },
+      "spec": {
+        "replicas": 0,
+        "selector": {
+          "matchLabels": {
+            "k8s-app": "order-fulfill-api",
+            "pod-template-hash": "1640257209"
+          }
+        },
+        "template": {
+          "metadata": {
+            "annotations": {
+              "description": "This is the Order Fulfill API"
+            },
+            "creationTimestamp": null,
+            "labels": {
+              "k8s-app": "order-fulfill-api",
+              "pod-template-hash": "1640257209"
+            },
+            "name": "order-fulfill-api"
+          },
+          "spec": {
+            "containers": [
+              {
+                "env": [
+                  {
+                    "name": "TEAMNAME",
+                    "value": "team6-SKY1807"
+                  },
+                  {
+                    "name": "MONGOHOST",
+                    "value": "mongodb://orders:secret@brazen-bobcat-mongodb.default"
+                  }
+                ],
+                "image": "shanepeckham/fulfillorderack:v8",
+                "imagePullPolicy": "IfNotPresent",
+                "name": "order-fulfill-api",
+                "resources": {},
+                "securityContext": {
+                  "privileged": false
+                },
+                "terminationMessagePath": "/dev/termination-log",
+                "terminationMessagePolicy": "File",
+                "volumeMounts": [
+                  {
+                    "mountPath": "/orders",
+                    "name": "volume"
+                  }
+                ]
+              }
+            ],
+            "dnsPolicy": "ClusterFirst",
+            "restartPolicy": "Always",
+            "schedulerName": "default-scheduler",
+            "securityContext": {},
+            "terminationGracePeriodSeconds": 30,
+            "volumes": [
+              {
+                "name": "volume",
+                "persistentVolumeClaim": {
+                  "claimName": "azure-managed-disk"
+                }
+              }
+            ]
+          }
+        }
+      },
+      "status": {
+        "observedGeneration": 2,
+        "replicas": 0
+      }
+    },
+    {
+      "apiVersion": "extensions/v1beta1",
+      "kind": "ReplicaSet",
+      "metadata": {
+        "annotations": {
+          "deployment.kubernetes.io/desired-replicas": "1",
+          "deployment.kubernetes.io/max-replicas": "2",
+          "deployment.kubernetes.io/revision": "7",
+          "deployment.kubernetes.io/revision-history": "5",
+          "description": "This is the Order Fulfill API"
+        },
+        "creationTimestamp": "2018-07-16T12:58:28Z",
+        "generation": 4,
+        "labels": {
+          "k8s-app": "order-fulfill-api",
+          "pod-template-hash": "2031716541"
+        },
+        "name": "order-fulfill-api-6475c5b985",
+        "namespace": "$NAMESPACE",
+        "ownerReferences": [
+          {
+            "apiVersion": "extensions/v1beta1",
+            "blockOwnerDeletion": true,
+            "controller": true,
+            "kind": "Deployment",
+            "name": "order-fulfill-api",
+            "uid": "ba34a861-88e7-11e8-aebd-0a58ac1f16cd"
+          }
+        ],
+        "resourceVersion": "26299",
+        "selfLink": "/apis/extensions/v1beta1/namespaces/default/replicasets/order-fulfill-api-6475c5b985",
+        "uid": "ef6894cd-88f7-11e8-aebd-0a58ac1f16cd"
+      },
+      "spec": {
+        "replicas": 0,
+        "selector": {
+          "matchLabels": {
+            "k8s-app": "order-fulfill-api",
+            "pod-template-hash": "2031716541"
+          }
+        },
+        "template": {
+          "metadata": {
+            "annotations": {
+              "description": "This is the Order Fulfill API"
+            },
+            "creationTimestamp": null,
+            "labels": {
+              "k8s-app": "order-fulfill-api",
+              "pod-template-hash": "2031716541"
+            },
+            "name": "order-fulfill-api"
+          },
+          "spec": {
+            "containers": [
+              {
+                "env": [
+                  {
+                    "name": "TEAMNAME",
+                    "value": "team6-SKY1807"
+                  },
+                  {
+                    "name": "MONGOHOST",
+                    "value": "mongodb://orders:secret@brazen-bobcat-mongodb.default"
+                  }
+                ],
+                "image": "shanepeckham/fulfillorderack:v8",
+                "imagePullPolicy": "IfNotPresent",
+                "name": "order-fulfill-api",
+                "resources": {},
+                "securityContext": {
+                  "privileged": false
+                },
+                "terminationMessagePath": "/dev/termination-log",
+                "terminationMessagePolicy": "File",
+                "volumeMounts": [
+                  {
+                    "mountPath": "/orders",
+                    "name": "volume"
+                  }
+                ]
+              }
+            ],
+            "dnsPolicy": "ClusterFirst",
+            "restartPolicy": "Always",
+            "schedulerName": "default-scheduler",
+            "securityContext": {},
+            "terminationGracePeriodSeconds": 30,
+            "volumes": [
+              {
+                "name": "volume",
+                "persistentVolumeClaim": {
+                  "claimName": "azurefile"
+                }
+              }
+            ]
+          }
+        }
+      },
+      "status": {
+        "observedGeneration": 4,
+        "replicas": 0
+      }
+    },
+    {
+      "apiVersion": "extensions/v1beta1",
+      "kind": "ReplicaSet",
+      "metadata": {
+        "annotations": {
+          "deployment.kubernetes.io/desired-replicas": "1",
+          "deployment.kubernetes.io/max-replicas": "2",
+          "deployment.kubernetes.io/revision": "1",
+          "description": "This is the Order Fulfill API"
+        },
+        "creationTimestamp": "2018-07-16T11:02:27Z",
+        "generation": 2,
+        "labels": {
+          "k8s-app": "order-fulfill-api",
+          "pod-template-hash": "2597922629"
+        },
+        "name": "order-fulfill-api-69fcf66b6f",
+        "namespace": "$NAMESPACE",
+        "ownerReferences": [
+          {
+            "apiVersion": "extensions/v1beta1",
+            "blockOwnerDeletion": true,
+            "controller": true,
+            "kind": "Deployment",
+            "name": "order-fulfill-api",
+            "uid": "ba34a861-88e7-11e8-aebd-0a58ac1f16cd"
+          }
+        ],
+        "resourceVersion": "14016",
+        "selfLink": "/apis/extensions/v1beta1/namespaces/default/replicasets/order-fulfill-api-69fcf66b6f",
+        "uid": "ba3b2b77-88e7-11e8-aebd-0a58ac1f16cd"
+      },
+      "spec": {
+        "replicas": 0,
+        "selector": {
+          "matchLabels": {
+            "k8s-app": "order-fulfill-api",
+            "pod-template-hash": "2597922629"
+          }
+        },
+        "template": {
+          "metadata": {
+            "annotations": {
+              "description": "This is the Order Fulfill API"
+            },
+            "creationTimestamp": null,
+            "labels": {
+              "k8s-app": "order-fulfill-api",
+              "pod-template-hash": "2597922629"
+            },
+            "name": "order-fulfill-api"
+          },
+          "spec": {
+            "containers": [
+              {
+                "env": [
+                  {
+                    "name": "TEAMNAME",
+                    "value": "team6-SKY1807"
+                  },
+                  {
+                    "name": "MONGOHOST",
+                    "value": "mongodb://orders:secret@brazen-bobcat-mongodb.default"
+                  }
+                ],
+                "image": "shanepeckham/fulfillorderack:v8",
+                "imagePullPolicy": "IfNotPresent",
+                "name": "order-fulfill-api",
+                "resources": {},
+                "securityContext": {
+                  "privileged": false
+                },
+                "terminationMessagePath": "/dev/termination-log",
+                "terminationMessagePolicy": "File"
+              }
+            ],
+            "dnsPolicy": "ClusterFirst",
+            "restartPolicy": "Always",
+            "schedulerName": "default-scheduler",
+            "securityContext": {},
+            "terminationGracePeriodSeconds": 30
+          }
+        }
+      },
+      "status": {
+        "observedGeneration": 2,
+        "replicas": 0
+      }
+    },
+    {
+      "apiVersion": "extensions/v1beta1",
+      "kind": "ReplicaSet",
+      "metadata": {
+        "annotations": {
+          "deployment.kubernetes.io/desired-replicas": "1",
+          "deployment.kubernetes.io/max-replicas": "2",
+          "deployment.kubernetes.io/revision": "3",
+          "description": "This is the Order Fulfill API"
+        },
+        "creationTimestamp": "2018-07-16T12:41:53Z",
+        "generation": 2,
+        "labels": {
+          "k8s-app": "order-fulfill-api",
+          "pod-template-hash": "2702989149"
+        },
+        "name": "order-fulfill-api-6c46fdf58f",
+        "namespace": "$NAMESPACE",
+        "ownerReferences": [
+          {
+            "apiVersion": "extensions/v1beta1",
+            "blockOwnerDeletion": true,
+            "controller": true,
+            "kind": "Deployment",
+            "name": "order-fulfill-api",
+            "uid": "ba34a861-88e7-11e8-aebd-0a58ac1f16cd"
+          }
+        ],
+        "resourceVersion": "22960",
+        "selfLink": "/apis/extensions/v1beta1/namespaces/default/replicasets/order-fulfill-api-6c46fdf58f",
+        "uid": "9e36713d-88f5-11e8-aebd-0a58ac1f16cd"
+      },
+      "spec": {
+        "replicas": 0,
+        "selector": {
+          "matchLabels": {
+            "k8s-app": "order-fulfill-api",
+            "pod-template-hash": "2702989149"
+          }
+        },
+        "template": {
+          "metadata": {
+            "annotations": {
+              "description": "This is the Order Fulfill API"
+            },
+            "creationTimestamp": null,
+            "labels": {
+              "k8s-app": "order-fulfill-api",
+              "pod-template-hash": "2702989149"
+            },
+            "name": "order-fulfill-api"
+          },
+          "spec": {
+            "containers": [
+              {
+                "env": [
+                  {
+                    "name": "TEAMNAME",
+                    "value": "team6-SKY1807"
+                  },
+                  {
+                    "name": "MONGOHOST",
+                    "value": "mongodb://orders:secret@brazen-bobcat-mongodb.default"
+                  }
+                ],
+                "image": "shanepeckham/fulfillorderack:v8",
+                "imagePullPolicy": "IfNotPresent",
+                "name": "order-fulfill-api",
+                "resources": {},
+                "securityContext": {
+                  "privileged": false
+                },
+                "terminationMessagePath": "/dev/termination-log",
+                "terminationMessagePolicy": "File",
+                "volumeMounts": [
+                  {
+                    "mountPath": "/orders",
+                    "name": "volume"
+                  }
+                ]
+              }
+            ],
+            "dnsPolicy": "ClusterFirst",
+            "restartPolicy": "Always",
+            "schedulerName": "default-scheduler",
+            "securityContext": {},
+            "terminationGracePeriodSeconds": 30,
+            "volumes": [
+              {
+                "name": "volume",
+                "persistentVolumeClaim": {
+                  "claimName": "default"
+                }
+              }
+            ]
+          }
+        }
+      },
+      "status": {
+        "observedGeneration": 2,
+        "replicas": 0
+      }
+    },
+    {
+      "apiVersion": "extensions/v1beta1",
+      "kind": "ReplicaSet",
+      "metadata": {
+        "annotations": {
+          "deployment.kubernetes.io/desired-replicas": "1",
+          "deployment.kubernetes.io/max-replicas": "2",
+          "deployment.kubernetes.io/revision": "8",
+          "description": "This is the Order Fulfill API"
+        },
+        "creationTimestamp": "2018-07-16T13:19:30Z",
+        "generation": 1,
+        "labels": {
+          "k8s-app": "order-fulfill-api",
+          "pod-template-hash": "946870188"
+        },
+        "name": "order-fulfill-api-f8bdc45dd",
+        "namespace": "$NAMESPACE",
+        "ownerReferences": [
+          {
+            "apiVersion": "extensions/v1beta1",
+            "blockOwnerDeletion": true,
+            "controller": true,
+            "kind": "Deployment",
+            "name": "order-fulfill-api",
+            "uid": "ba34a861-88e7-11e8-aebd-0a58ac1f16cd"
+          }
+        ],
+        "resourceVersion": "26292",
+        "selfLink": "/apis/extensions/v1beta1/namespaces/default/replicasets/order-fulfill-api-f8bdc45dd",
+        "uid": "df601154-88fa-11e8-aebd-0a58ac1f16cd"
+      },
+      "spec": {
+        "replicas": 1,
+        "selector": {
+          "matchLabels": {
+            "k8s-app": "order-fulfill-api",
+            "pod-template-hash": "946870188"
+          }
+        },
+        "template": {
+          "metadata": {
+            "annotations": {
+              "description": "This is the Order Fulfill API"
+            },
+            "creationTimestamp": null,
+            "labels": {
+              "k8s-app": "order-fulfill-api",
+              "pod-template-hash": "946870188"
+            },
+            "name": "order-fulfill-api"
+          },
+          "spec": {
+            "containers": [
+              {
+                "env": [
+                  {
+                    "name": "TEAMNAME",
+                    "value": "team6-SKY1807"
+                  },
+                  {
+                    "name": "MONGOHOST",
+                    "value": "mongodb://orders:secret@brazen-bobcat-mongodb.default"
+                  }
+                ],
+                "image": "team6sky1807registry.azurecr.io/fulfillorderack",
+                "imagePullPolicy": "IfNotPresent",
+                "name": "order-fulfill-api",
+                "resources": {},
+                "securityContext": {
+                  "privileged": false
+                },
+                "terminationMessagePath": "/dev/termination-log",
+                "terminationMessagePolicy": "File",
+                "volumeMounts": [
+                  {
+                    "mountPath": "/orders",
+                    "name": "volume"
+                  }
+                ]
+              }
+            ],
+            "dnsPolicy": "ClusterFirst",
+            "imagePullSecrets": [
+              {
+                "name": "team-6-reg-cred"
+              }
+            ],
+            "restartPolicy": "Always",
+            "schedulerName": "default-scheduler",
+            "securityContext": {},
+            "terminationGracePeriodSeconds": 30,
+            "volumes": [
+              {
+                "name": "volume",
+                "persistentVolumeClaim": {
+                  "claimName": "azurefile"
+                }
+              }
+            ]
+          }
+        }
+      },
+      "status": {
+        "availableReplicas": 1,
+        "fullyLabeledReplicas": 1,
+        "observedGeneration": 1,
+        "readyReplicas": 1,
+        "replicas": 1
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "data": {
+        "rabbitmq-erlang-cookie": "dmg4S1pvSzlaQlB0UkhrcGhkR01WRG9PVHI5dTFKT2Q=",
+        "rabbitmq-password": "Ii16bHp+NzYyPz9GJkEvfF46UlVOXUhG"
+      },
+      "kind": "Secret",
+      "metadata": {
+        "creationTimestamp": "2018-07-16T09:57:56Z",
+        "labels": {
+          "app": "rabbitmq-ha",
+          "chart": "rabbitmq-ha-1.6.3",
+          "heritage": "Tiller",
+          "release": "affable-pike"
+        },
+        "name": "affable-pike-rabbitmq-ha",
+        "namespace": "$NAMESPACE",
+        "resourceVersion": "6196",
+        "selfLink": "/api/v1/namespaces/default/secrets/affable-pike-rabbitmq-ha",
+        "uid": "b6fb92d6-88de-11e8-aebd-0a58ac1f16cd"
+      },
+      "type": "Opaque"
+    },
+    {
+      "apiVersion": "v1",
+      "data": {
+        "ca.crt": "LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUV4ekNDQXErZ0F3SUJBZ0lRSkdhWngxaFRhVG10N1ZYaTlTKzVXekFOQmdrcWhraUc5dzBCQVFzRkFEQU4KTVFzd0NRWURWUVFERXdKallUQWVGdzB4T0RBM01UWXdPRFV5TVRWYUZ3MHlNREEzTVRVd09EVXlNVFZhTUEweApDekFKQmdOVkJBTVRBbU5oTUlJQ0lqQU5CZ2txaGtpRzl3MEJBUUVGQUFPQ0FnOEFNSUlDQ2dLQ0FnRUFzRG9ICkRTaTZrZ2xtOXI4UlBnT2duUFhzcmJaZTdFTFhOSkZkZmp1UEE5VWEvVmFZRXVKVndIdmorcDNsWHE1UUMxQVEKN2N1YnlZSHNzZzN4UjhmYk9VSFVyWXV4Y1hsWXFKWGprb1FuTy9wZDJjQnF2aC9yUVB6ckhEcW45cThHbHhDTgpEa3MrUVVLbG5XWStEWHNqb3VrbFpCdGkxc0JxTEwyZU85RDdlcFpGMDc2VXBZVFJWOXRsUlgrSVVJYXR5RFRuCi94WHFtcWZnNGFOUHQyNCsyZk1lV2lVSHJvZ1hRRzBCNnF3M2VUQThnRm9iUlpGUFJucm1pOGhVd2JYWm8xQ0MKUXBRck9pOFFZZ2tIU1RHcTFsM3pYdm5adDdTaDJEQnd6OXZpTFY3c0lqRGRtdFpJUXloQzZXNHJjQ1FSNUR0bQpSYlo2Qno0QklGb0tpWTQ2NStlU2JXNTZPVE9XcXlNVTErQWVlR1Q0Y2VPZlo2djdqZmFFRzB0bDUxNVoyL1psClpaT3AwclB1VTFPejArc0IrRWtudzBucjFMWFAwZWdqMERkQjh4UWpqaG42cFNUTHN5UmtSUlQ1L2tlOXgzMjIKQ1BKZGZ6YzRMK25tMWtOSU1XT3dtRi9TZStqWUFla2YzUzNVaGh2eXZuUVZRUTcxL1hkMW5vbGg0TUFGcUdJWQpGdmgxTW9Gc1BTcEprUjFJMEo5Y1dNYjZWYjRZUlZQUGJzZDFXYVJMRy94aVlYVjJ0N1ZoQ05TOEZjbC9XN2hiCmtNSVpjcm0yeFRTNk1RaXNZaGN2cVY3WkVaYlRhMjJLU25UMFA3VDcvU0ZJRXVMWUY5NjNZMWk0VlFQdk9sdVgKYU5qZk9kYStHVm5GaUhjNWhvR1MxL0hLa0lXTFN2VnY2aERsYWFNQ0F3RUFBYU1qTUNFd0RnWURWUjBQQVFILwpCQVFEQWdLa01BOEdBMVVkRXdFQi93UUZNQU1CQWY4d0RRWUpLb1pJaHZjTkFRRUxCUUFEZ2dJQkFGY1BsSHJJCnJQa1g4bmk4dk5Ma2NoNFdSY29TVkR5dEdkUzZQUjd6bWZTUE1OVWtHNnRjbDlCS0hDQ2J1T1ZpeDZyTEUrcTMKNzlCelFXYTNEOWp1OEphRmdVWjZveUxIQkN3RGFhVXI5YUhjVTBBZmRuSTVzRXBPbjBYcXQrcksrYnFiV2Y4ZgptMnl1QzIwNXFISEJ4Z2JtNm5zWDZPQmpSZ3AvL3pnT0hJT1BtZUVWR3JQL044VFFhS2VxNVc4am8yN0VBRGxtCkNSOW9NOFA0TC9TdG9XNy9CcEhDZ2FOckJ6T2NLRWJWZkdLSGU5UTZ5VTVKK1NHcER3NUh2aVV1M3gwRUEweU4KaUtVdmFkOFJVZzhxejlHR2lqZmJlTzVBeWlnanovVmFLUEhBRGlxc2o4YmdvbUpGMFRMS3JmaURrc201V1NqVApBbFVHRXQwbTBqQ2NSWVBWVzJoUkI1N0ZBck54VFkvQ1laemM5STFPQzZCWjRJLzh5WCtEd080REI0OXF3Z1BRCnFmTGZhUEdYcTlyM1M4blAyYVdZQldJUERndWY0SnZ5YUhqRGtpL0orYmlldkVuSURYeG00cDA5NFVJRkFOakIKVTJ6VkVhV3F6ZWtMQzYxZ0lYcFlMc21PQlJPcytnd2UybERURXEzc2ZobFkzSUY0LzdhM3VlSFZmSmhHZnNVWgo2SlRHMUZPOUxUb0V6Y1FXNUZFR3ltWlFnZGZrU3BYSkE4MzQwRFpZM0ZDMFNva3RqZ0dBTExKQ0tMaDJmNzZHClFJYkxWckhoc1FBbG9wcjhTai85Z2w4K081bERYMW9FSFUvenVxclZyNytZNmhPMFpoMWFSTXVYT1QzTUdmZ2cKejlMaWk1cTV0c0FJWGJJZDFUOU9HemNBY01qNFkwVC9oL1QxCi0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0K",
+        "namespace": "ZGVmYXVsdA==",
+        "token": "ZXlKaGJHY2lPaUpTVXpJMU5pSXNJbXRwWkNJNklpSjkuZXlKcGMzTWlPaUpyZFdKbGNtNWxkR1Z6TDNObGNuWnBZMlZoWTJOdmRXNTBJaXdpYTNWaVpYSnVaWFJsY3k1cGJ5OXpaWEoyYVdObFlXTmpiM1Z1ZEM5dVlXMWxjM0JoWTJVaU9pSmtaV1poZFd4MElpd2lhM1ZpWlhKdVpYUmxjeTVwYnk5elpYSjJhV05sWVdOamIzVnVkQzl6WldOeVpYUXVibUZ0WlNJNkltRm1abUZpYkdVdGNHbHJaUzF5WVdKaWFYUnRjUzFvWVMxMGIydGxiaTA0Y0dadGR5SXNJbXQxWW1WeWJtVjBaWE11YVc4dmMyVnlkbWxqWldGalkyOTFiblF2YzJWeWRtbGpaUzFoWTJOdmRXNTBMbTVoYldVaU9pSmhabVpoWW14bExYQnBhMlV0Y21GaVltbDBiWEV0YUdFaUxDSnJkV0psY201bGRHVnpMbWx2TDNObGNuWnBZMlZoWTJOdmRXNTBMM05sY25acFkyVXRZV05qYjNWdWRDNTFhV1FpT2lKaU56QTVNalpoWXkwNE9HUmxMVEV4WlRndFlXVmlaQzB3WVRVNFlXTXhaakUyWTJRaUxDSnpkV0lpT2lKemVYTjBaVzA2YzJWeWRtbGpaV0ZqWTI5MWJuUTZaR1ZtWVhWc2REcGhabVpoWW14bExYQnBhMlV0Y21GaVltbDBiWEV0YUdFaWZRLlJLc2IxNl9Mc3RPVWNfQ2JyYksxMVlCTDR5VDFPRXg1bG11WmpjMzFBUDZQOHNSVUpYc2QzZVZzUHQ2MzF3OWIyWXNqMURSalJVeW1XMTVyVDJsQnMtck9EREpCRWRaa0t5ZUNGRW5nN2J5dGVGWUtjUmJ2SkZaSW9BdFk1aDM0Uk03a0Q2TTN5dnJ5V29GVS12MTRNLWtvcnVDYnc5OGEzT0tfR2Z2Y19DVFFzMy0zZEFNenlrbDN3b0ItaWJNWmFheFFDa3laaDRhRi1jcWxTaDRCMTk0elB5QTJzM3NCVGF1MmdwTHBtcVNsRkZ1UjRheTI3M2VoWGxuYTlqZmJ2RG9HZndtSkRJbVVpeXM3cU0xS0dTV2I3Y09pVnpxSnJhTWpGZUItZUY2ZnZrcjRPNVcyVHZnSlVXQm92UzJwTVc5NHVVTUNuckk4NjhxTU94U2xUT2p6N0ZBWmZ0enJxajBXdWhOYjhzRzlrWWJ4ZUxuYzItMFRxWWpuc1Vrc2M4VmljeXp0NFpZM1dYSnpaZlZVeXhVekdYS2Z0VHV5NTRPQTNKaDhwX2xxT05IUExkVnVTbUFIdVI0YzZiN0RSQUg1RTd2Q01mM1hpa2xiT3BGcGZJWHdFd3FkX1RRU1BscmpYVHdrbHo1V3R2bF9INFpTVGhGZ2dGNHBCc1JkbmlyM2tUakc5NzJfVUFZb0JBem82UXQ2d3ZlWlY3dzg4RC01OFdxNHVaeGR0eVBILS1MNWk0bjdBLXlGSHRNM0Q5WE4zRkt6UXJObGh5UVpvcjRoUFBGRkw2QmtGX2hQZUdJdkxhdlFZZGJBT3hobHlsYk5xUThtZkRDWmk3TTBMWmtEVHczbHM2TW9DREZXSlY3dkhoRk41SWpsbGN0X0RZZHBWUzRLcmtB"
+      },
+      "kind": "Secret",
+      "metadata": {
+        "annotations": {
+          "kubernetes.io/service-account.name": "affable-pike-rabbitmq-ha",
+          "kubernetes.io/service-account.uid": "b70926ac-88de-11e8-aebd-0a58ac1f16cd"
+        },
+        "creationTimestamp": "2018-07-16T09:57:57Z",
+        "name": "affable-pike-rabbitmq-ha-token-8pfmw",
+        "namespace": "$NAMESPACE",
+        "resourceVersion": "6199",
+        "selfLink": "/api/v1/namespaces/default/secrets/affable-pike-rabbitmq-ha-token-8pfmw",
+        "uid": "b70ecce8-88de-11e8-aebd-0a58ac1f16cd"
+      },
+      "type": "kubernetes.io/service-account-token"
+    },
+    {
+      "apiVersion": "v1",
+      "data": {
+        "azurestorageaccountkey": "SlQvejY5c1IzTnRQZFpYMkpLUlJaTjBDZzBkUmE4VWg1Vi9OZUpZYjBudU5ENEdYcTI4dUdITzRSWHUrZ3I3QnB4akZEcmJVZWEyOEFOMmY3aEp0Nnc9PQ==",
+        "azurestorageaccountname": "ZmRjZDM4NzU3ODhmOTExZThhMjdkMGE="
+      },
+      "kind": "Secret",
+      "metadata": {
+        "creationTimestamp": "2018-07-16T13:12:34Z",
+        "name": "azure-storage-account-fdcd3875788f911e8a27d0a-secret",
+        "namespace": "$NAMESPACE",
+        "resourceVersion": "25437",
+        "selfLink": "/api/v1/namespaces/default/secrets/azure-storage-account-fdcd3875788f911e8a27d0a-secret",
+        "uid": "e79ddb02-88f9-11e8-aebd-0a58ac1f16cd"
+      },
+      "type": "Opaque"
+    },
+    {
+      "apiVersion": "v1",
+      "data": {
+        "mongodb-root-password": "b01wZDBKb0RvVw=="
+      },
+      "kind": "Secret",
+      "metadata": {
+        "creationTimestamp": "2018-07-16T09:10:18Z",
+        "labels": {
+          "app": "mongodb",
+          "chart": "mongodb-3.0.4",
+          "heritage": "Tiller",
+          "release": "brazen-bobcat"
+        },
+        "name": "brazen-bobcat-mongodb",
+        "namespace": "$NAMESPACE",
+        "resourceVersion": "1503",
+        "selfLink": "/api/v1/namespaces/default/secrets/brazen-bobcat-mongodb",
+        "uid": "0f45aa05-88d8-11e8-aebd-0a58ac1f16cd"
+      },
+      "type": "Opaque"
+    },
+    {
+      "apiVersion": "v1",
+      "data": {
+        "ca.crt": "LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUV4ekNDQXErZ0F3SUJBZ0lRSkdhWngxaFRhVG10N1ZYaTlTKzVXekFOQmdrcWhraUc5dzBCQVFzRkFEQU4KTVFzd0NRWURWUVFERXdKallUQWVGdzB4T0RBM01UWXdPRFV5TVRWYUZ3MHlNREEzTVRVd09EVXlNVFZhTUEweApDekFKQmdOVkJBTVRBbU5oTUlJQ0lqQU5CZ2txaGtpRzl3MEJBUUVGQUFPQ0FnOEFNSUlDQ2dLQ0FnRUFzRG9ICkRTaTZrZ2xtOXI4UlBnT2duUFhzcmJaZTdFTFhOSkZkZmp1UEE5VWEvVmFZRXVKVndIdmorcDNsWHE1UUMxQVEKN2N1YnlZSHNzZzN4UjhmYk9VSFVyWXV4Y1hsWXFKWGprb1FuTy9wZDJjQnF2aC9yUVB6ckhEcW45cThHbHhDTgpEa3MrUVVLbG5XWStEWHNqb3VrbFpCdGkxc0JxTEwyZU85RDdlcFpGMDc2VXBZVFJWOXRsUlgrSVVJYXR5RFRuCi94WHFtcWZnNGFOUHQyNCsyZk1lV2lVSHJvZ1hRRzBCNnF3M2VUQThnRm9iUlpGUFJucm1pOGhVd2JYWm8xQ0MKUXBRck9pOFFZZ2tIU1RHcTFsM3pYdm5adDdTaDJEQnd6OXZpTFY3c0lqRGRtdFpJUXloQzZXNHJjQ1FSNUR0bQpSYlo2Qno0QklGb0tpWTQ2NStlU2JXNTZPVE9XcXlNVTErQWVlR1Q0Y2VPZlo2djdqZmFFRzB0bDUxNVoyL1psClpaT3AwclB1VTFPejArc0IrRWtudzBucjFMWFAwZWdqMERkQjh4UWpqaG42cFNUTHN5UmtSUlQ1L2tlOXgzMjIKQ1BKZGZ6YzRMK25tMWtOSU1XT3dtRi9TZStqWUFla2YzUzNVaGh2eXZuUVZRUTcxL1hkMW5vbGg0TUFGcUdJWQpGdmgxTW9Gc1BTcEprUjFJMEo5Y1dNYjZWYjRZUlZQUGJzZDFXYVJMRy94aVlYVjJ0N1ZoQ05TOEZjbC9XN2hiCmtNSVpjcm0yeFRTNk1RaXNZaGN2cVY3WkVaYlRhMjJLU25UMFA3VDcvU0ZJRXVMWUY5NjNZMWk0VlFQdk9sdVgKYU5qZk9kYStHVm5GaUhjNWhvR1MxL0hLa0lXTFN2VnY2aERsYWFNQ0F3RUFBYU1qTUNFd0RnWURWUjBQQVFILwpCQVFEQWdLa01BOEdBMVVkRXdFQi93UUZNQU1CQWY4d0RRWUpLb1pJaHZjTkFRRUxCUUFEZ2dJQkFGY1BsSHJJCnJQa1g4bmk4dk5Ma2NoNFdSY29TVkR5dEdkUzZQUjd6bWZTUE1OVWtHNnRjbDlCS0hDQ2J1T1ZpeDZyTEUrcTMKNzlCelFXYTNEOWp1OEphRmdVWjZveUxIQkN3RGFhVXI5YUhjVTBBZmRuSTVzRXBPbjBYcXQrcksrYnFiV2Y4ZgptMnl1QzIwNXFISEJ4Z2JtNm5zWDZPQmpSZ3AvL3pnT0hJT1BtZUVWR3JQL044VFFhS2VxNVc4am8yN0VBRGxtCkNSOW9NOFA0TC9TdG9XNy9CcEhDZ2FOckJ6T2NLRWJWZkdLSGU5UTZ5VTVKK1NHcER3NUh2aVV1M3gwRUEweU4KaUtVdmFkOFJVZzhxejlHR2lqZmJlTzVBeWlnanovVmFLUEhBRGlxc2o4YmdvbUpGMFRMS3JmaURrc201V1NqVApBbFVHRXQwbTBqQ2NSWVBWVzJoUkI1N0ZBck54VFkvQ1laemM5STFPQzZCWjRJLzh5WCtEd080REI0OXF3Z1BRCnFmTGZhUEdYcTlyM1M4blAyYVdZQldJUERndWY0SnZ5YUhqRGtpL0orYmlldkVuSURYeG00cDA5NFVJRkFOakIKVTJ6VkVhV3F6ZWtMQzYxZ0lYcFlMc21PQlJPcytnd2UybERURXEzc2ZobFkzSUY0LzdhM3VlSFZmSmhHZnNVWgo2SlRHMUZPOUxUb0V6Y1FXNUZFR3ltWlFnZGZrU3BYSkE4MzQwRFpZM0ZDMFNva3RqZ0dBTExKQ0tMaDJmNzZHClFJYkxWckhoc1FBbG9wcjhTai85Z2w4K081bERYMW9FSFUvenVxclZyNytZNmhPMFpoMWFSTXVYT1QzTUdmZ2cKejlMaWk1cTV0c0FJWGJJZDFUOU9HemNBY01qNFkwVC9oL1QxCi0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0K",
+        "namespace": "ZGVmYXVsdA==",
+        "token": "ZXlKaGJHY2lPaUpTVXpJMU5pSXNJbXRwWkNJNklpSjkuZXlKcGMzTWlPaUpyZFdKbGNtNWxkR1Z6TDNObGNuWnBZMlZoWTJOdmRXNTBJaXdpYTNWaVpYSnVaWFJsY3k1cGJ5OXpaWEoyYVdObFlXTmpiM1Z1ZEM5dVlXMWxjM0JoWTJVaU9pSmtaV1poZFd4MElpd2lhM1ZpWlhKdVpYUmxjeTVwYnk5elpYSjJhV05sWVdOamIzVnVkQzl6WldOeVpYUXVibUZ0WlNJNkltUmxabUYxYkhRdGRHOXJaVzR0YW5GM01qSWlMQ0pyZFdKbGNtNWxkR1Z6TG1sdkwzTmxjblpwWTJWaFkyTnZkVzUwTDNObGNuWnBZMlV0WVdOamIzVnVkQzV1WVcxbElqb2laR1ZtWVhWc2RDSXNJbXQxWW1WeWJtVjBaWE11YVc4dmMyVnlkbWxqWldGalkyOTFiblF2YzJWeWRtbGpaUzFoWTJOdmRXNTBMblZwWkNJNkltVTJPRGxpTURBM0xUZzRaRFl0TVRGbE9DMWhaV0prTFRCaE5UaGhZekZtTVRaalpDSXNJbk4xWWlJNkluTjVjM1JsYlRwelpYSjJhV05sWVdOamIzVnVkRHBrWldaaGRXeDBPbVJsWm1GMWJIUWlmUS5aWnFPbFdmUjEySHVZd2NYUEtyLXdlb1cxeU9pMXBJZFhjZUR1V01NZ2t2RldNWk1ZRUdQZGlDOUtSNXJpRjFPMGZfN05hMkVnYUN1Qk1ldmdjRDlmSUd4T1Q1ekhYZFFTakFyMEJPaVB3RFdsZndCWEtSWktwLWh3NWg5ZEhrLWlDRG82YnVnQnZ0VlZWbE1pOVJOZFozMnlHWmhvOWdRRi1WSTZCRXZ3OWc1c3F2OGxOUEEwN0lfQjRRRnZUajE4enFteWxsbHZIZ01Wak1NUjIzZFdsLXlLSEY1aFBmRGZVZW9qXzNnd3QteHN4RklpYVJOZ0NfNWZGTU4xQU5OWUF4bFVmY2NSQURrTF83NlZ3MzhfUmQtU1NDaVFEaEQ5RXRrSUhZczRiTVJXRGZvWEpLMEJuTHFXcnhoN0R2OGtvNGJKdUpZUkN5LVdZQ0RHLWF0OV9CazM1MWhmVmtvLU0wRHlfY2c2cFdCWTZPN29YalI5S1J0UkJZM3ItS2g4OWtRRmhwNTRoY3Zpek9IRUpsanlCaUNZU1hhbzZrYmFqN3docHBEUzBXWjhDTHl2TktXdXl5ckgxR1gyM2pjVGRIR3BwYkF0YkRVa2NsSjh0WDVmN05xYWd6WWw0OE1qWlNPRU5TdGxpNThQVUpTTERWTE5aQ0hpbkd3cnVoWHlfTzc2OGZWUDhaM2dHbk52aXphbkRjTS1xcFQ3Vk9vVjlNYm5FNWE1ZTg1WlBkNE9LOXpuNVVXVURRd0ZIamtyMkhjX2FkUnVXZHRDRG91T1BHNVA5aEg1ZkhKTmJuZFBia1VGZUpwSDl1cTEyTE9zbnp4eWhJTUNPVUJDRkZlb2x3UzFLblpzbFozMVhnZHE0SzRtV0p5WXhsU3BRbWlnMFdYR2JTRlhZUQ=="
+      },
+      "kind": "Secret",
+      "metadata": {
+        "annotations": {
+          "kubernetes.io/service-account.name": "default",
+          "kubernetes.io/service-account.uid": "e689b007-88d6-11e8-aebd-0a58ac1f16cd"
+        },
+        "creationTimestamp": "2018-07-16T09:02:00Z",
+        "name": "default-token-jqw22",
+        "namespace": "$NAMESPACE",
+        "resourceVersion": "143",
+        "selfLink": "/api/v1/namespaces/default/secrets/default-token-jqw22",
+        "uid": "e694553f-88d6-11e8-aebd-0a58ac1f16cd"
+      },
+      "type": "kubernetes.io/service-account-token"
+    },
+    {
+      "apiVersion": "v1",
+      "data": {
+        "rabbitmq-erlang-cookie": "NktJSWx2b1EzZFNZNnJheWdRTkRRaXhuZDBpYUZaTjg=",
+        "rabbitmq-password": "MW1QPTxJOUhvTFdWVnsnXGlIUjYiPiFT"
+      },
+      "kind": "Secret",
+      "metadata": {
+        "creationTimestamp": "2018-07-16T10:06:34Z",
+        "labels": {
+          "app": "rabbitmq-ha",
+          "chart": "rabbitmq-ha-1.6.3",
+          "heritage": "Tiller",
+          "release": "eponymous-horse"
+        },
+        "name": "eponymous-horse-rabbitmq-ha",
+        "namespace": "$NAMESPACE",
+        "resourceVersion": "7327",
+        "selfLink": "/api/v1/namespaces/default/secrets/eponymous-horse-rabbitmq-ha",
+        "uid": "eb4e0284-88df-11e8-aebd-0a58ac1f16cd"
+      },
+      "type": "Opaque"
+    },
+    {
+      "apiVersion": "v1",
+      "data": {
+        "ca.crt": "LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUV4ekNDQXErZ0F3SUJBZ0lRSkdhWngxaFRhVG10N1ZYaTlTKzVXekFOQmdrcWhraUc5dzBCQVFzRkFEQU4KTVFzd0NRWURWUVFERXdKallUQWVGdzB4T0RBM01UWXdPRFV5TVRWYUZ3MHlNREEzTVRVd09EVXlNVFZhTUEweApDekFKQmdOVkJBTVRBbU5oTUlJQ0lqQU5CZ2txaGtpRzl3MEJBUUVGQUFPQ0FnOEFNSUlDQ2dLQ0FnRUFzRG9ICkRTaTZrZ2xtOXI4UlBnT2duUFhzcmJaZTdFTFhOSkZkZmp1UEE5VWEvVmFZRXVKVndIdmorcDNsWHE1UUMxQVEKN2N1YnlZSHNzZzN4UjhmYk9VSFVyWXV4Y1hsWXFKWGprb1FuTy9wZDJjQnF2aC9yUVB6ckhEcW45cThHbHhDTgpEa3MrUVVLbG5XWStEWHNqb3VrbFpCdGkxc0JxTEwyZU85RDdlcFpGMDc2VXBZVFJWOXRsUlgrSVVJYXR5RFRuCi94WHFtcWZnNGFOUHQyNCsyZk1lV2lVSHJvZ1hRRzBCNnF3M2VUQThnRm9iUlpGUFJucm1pOGhVd2JYWm8xQ0MKUXBRck9pOFFZZ2tIU1RHcTFsM3pYdm5adDdTaDJEQnd6OXZpTFY3c0lqRGRtdFpJUXloQzZXNHJjQ1FSNUR0bQpSYlo2Qno0QklGb0tpWTQ2NStlU2JXNTZPVE9XcXlNVTErQWVlR1Q0Y2VPZlo2djdqZmFFRzB0bDUxNVoyL1psClpaT3AwclB1VTFPejArc0IrRWtudzBucjFMWFAwZWdqMERkQjh4UWpqaG42cFNUTHN5UmtSUlQ1L2tlOXgzMjIKQ1BKZGZ6YzRMK25tMWtOSU1XT3dtRi9TZStqWUFla2YzUzNVaGh2eXZuUVZRUTcxL1hkMW5vbGg0TUFGcUdJWQpGdmgxTW9Gc1BTcEprUjFJMEo5Y1dNYjZWYjRZUlZQUGJzZDFXYVJMRy94aVlYVjJ0N1ZoQ05TOEZjbC9XN2hiCmtNSVpjcm0yeFRTNk1RaXNZaGN2cVY3WkVaYlRhMjJLU25UMFA3VDcvU0ZJRXVMWUY5NjNZMWk0VlFQdk9sdVgKYU5qZk9kYStHVm5GaUhjNWhvR1MxL0hLa0lXTFN2VnY2aERsYWFNQ0F3RUFBYU1qTUNFd0RnWURWUjBQQVFILwpCQVFEQWdLa01BOEdBMVVkRXdFQi93UUZNQU1CQWY4d0RRWUpLb1pJaHZjTkFRRUxCUUFEZ2dJQkFGY1BsSHJJCnJQa1g4bmk4dk5Ma2NoNFdSY29TVkR5dEdkUzZQUjd6bWZTUE1OVWtHNnRjbDlCS0hDQ2J1T1ZpeDZyTEUrcTMKNzlCelFXYTNEOWp1OEphRmdVWjZveUxIQkN3RGFhVXI5YUhjVTBBZmRuSTVzRXBPbjBYcXQrcksrYnFiV2Y4ZgptMnl1QzIwNXFISEJ4Z2JtNm5zWDZPQmpSZ3AvL3pnT0hJT1BtZUVWR3JQL044VFFhS2VxNVc4am8yN0VBRGxtCkNSOW9NOFA0TC9TdG9XNy9CcEhDZ2FOckJ6T2NLRWJWZkdLSGU5UTZ5VTVKK1NHcER3NUh2aVV1M3gwRUEweU4KaUtVdmFkOFJVZzhxejlHR2lqZmJlTzVBeWlnanovVmFLUEhBRGlxc2o4YmdvbUpGMFRMS3JmaURrc201V1NqVApBbFVHRXQwbTBqQ2NSWVBWVzJoUkI1N0ZBck54VFkvQ1laemM5STFPQzZCWjRJLzh5WCtEd080REI0OXF3Z1BRCnFmTGZhUEdYcTlyM1M4blAyYVdZQldJUERndWY0SnZ5YUhqRGtpL0orYmlldkVuSURYeG00cDA5NFVJRkFOakIKVTJ6VkVhV3F6ZWtMQzYxZ0lYcFlMc21PQlJPcytnd2UybERURXEzc2ZobFkzSUY0LzdhM3VlSFZmSmhHZnNVWgo2SlRHMUZPOUxUb0V6Y1FXNUZFR3ltWlFnZGZrU3BYSkE4MzQwRFpZM0ZDMFNva3RqZ0dBTExKQ0tMaDJmNzZHClFJYkxWckhoc1FBbG9wcjhTai85Z2w4K081bERYMW9FSFUvenVxclZyNytZNmhPMFpoMWFSTXVYT1QzTUdmZ2cKejlMaWk1cTV0c0FJWGJJZDFUOU9HemNBY01qNFkwVC9oL1QxCi0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0K",
+        "namespace": "ZGVmYXVsdA==",
+        "token": "ZXlKaGJHY2lPaUpTVXpJMU5pSXNJbXRwWkNJNklpSjkuZXlKcGMzTWlPaUpyZFdKbGNtNWxkR1Z6TDNObGNuWnBZMlZoWTJOdmRXNTBJaXdpYTNWaVpYSnVaWFJsY3k1cGJ5OXpaWEoyYVdObFlXTmpiM1Z1ZEM5dVlXMWxjM0JoWTJVaU9pSmtaV1poZFd4MElpd2lhM1ZpWlhKdVpYUmxjeTVwYnk5elpYSjJhV05sWVdOamIzVnVkQzl6WldOeVpYUXVibUZ0WlNJNkltVndiMjU1Ylc5MWN5MW9iM0p6WlMxeVlXSmlhWFJ0Y1Mxb1lTMTBiMnRsYmkxa1l6ZzRaaUlzSW10MVltVnlibVYwWlhNdWFXOHZjMlZ5ZG1salpXRmpZMjkxYm5RdmMyVnlkbWxqWlMxaFkyTnZkVzUwTG01aGJXVWlPaUpsY0c5dWVXMXZkWE10YUc5eWMyVXRjbUZpWW1sMGJYRXRhR0VpTENKcmRXSmxjbTVsZEdWekxtbHZMM05sY25acFkyVmhZMk52ZFc1MEwzTmxjblpwWTJVdFlXTmpiM1Z1ZEM1MWFXUWlPaUpsWWpWbE5HTXpNaTA0T0dSbUxURXhaVGd0WVdWaVpDMHdZVFU0WVdNeFpqRTJZMlFpTENKemRXSWlPaUp6ZVhOMFpXMDZjMlZ5ZG1salpXRmpZMjkxYm5RNlpHVm1ZWFZzZERwbGNHOXVlVzF2ZFhNdGFHOXljMlV0Y21GaVltbDBiWEV0YUdFaWZRLkE0TkcyUDNjNG51d0pkMjNlTUdxb0RsZnV1TUs2ZkpfWlVmellfSVRETkkzQjFJUFVFam1JUzdKZTFBWTFVWWNyWmJMNXQ0akpESUlOTnAwS3RvVnA2VWVTUnp5MEpGUldUT21kS3drTjhEdF9yam84cGlyb0FPcGdWVG5lNVpMa0RlNkk2bXV2X3pQb214dGpVaXk3cFNpMW9menNfbUJsYXdDams1TzVIZDEyQ2tzVHdMdmdwWVRCSzFWSFRMLTFoNElxamJCd3l1UDBuTmZXUk1oOVpEZG4zV2VkemZOR3RUTnlISThuZENnNDVSUXl2a0VKMklWQVFOdnRPYllYcjM0c2F6NDVYM3gwaG1qVU1BZFJZMDNaVmREODNPMlpFYTIyTGxZX3RNS19BR2ROdkpTc1d1X0pORldLT1NESHpncVJHOXhaZW9TNXJtc29uNEZxNHI0bmFuYzZCcFdMZVk3MEpLeVpZSkEyZ0hLN0lhWDk5UEticmVhejd4c1lkN2g3cVB0SkVOeVUybmtIVkpRZ0VNc1VQTDhHbVBJT1ZmN282elVINU9keDhlMmU3VWtTbTV1UGcxYnBKNGYwNy14UExKWUl4S2otMUsxdnprcGJ1Tmsxd1V4cXh0cW9OQnZxQ0RibTFYSFBveG1KZ3l5VXRmb0NYd211WHhtZW1IcmFUN2w2ajhfRUtOcnBfZ2pwVW5LcnExOG96NEc2TVhVTF9UcUhEdFR0Sk9UZnIyVUFvSU9ENGtudzI3c0tHMnRCSjlpU28zTGtmSzBxVEJ1Smh5X2dYdUNGTXJuVEFtYzBzZnoxelhJR0FCRmhpZGtrNWRhQUd4RjZ4QWwxcHRFc3JRR25sTVRybjhFWGIzSjFiWFlKenFsS2cwR1JNN0hyeHR6SjNN"
+      },
+      "kind": "Secret",
+      "metadata": {
+        "annotations": {
+          "kubernetes.io/service-account.name": "eponymous-horse-rabbitmq-ha",
+          "kubernetes.io/service-account.uid": "eb5e4c32-88df-11e8-aebd-0a58ac1f16cd"
+        },
+        "creationTimestamp": "2018-07-16T10:06:34Z",
+        "name": "eponymous-horse-rabbitmq-ha-token-dc88f",
+        "namespace": "$NAMESPACE",
+        "resourceVersion": "7330",
+        "selfLink": "/api/v1/namespaces/default/secrets/eponymous-horse-rabbitmq-ha-token-dc88f",
+        "uid": "eb649d71-88df-11e8-aebd-0a58ac1f16cd"
+      },
+      "type": "kubernetes.io/service-account-token"
+    },
+    {
+      "apiVersion": "v1",
+      "data": {
+        "rabbitmq-erlang-cookie": "NlNxclhzZWpLRmFvcE9DSFdvbFZoMElDMG83VDhFWkM=",
+        "rabbitmq-password": "ZHUwYUU4eGtrVQ=="
+      },
+      "kind": "Secret",
+      "metadata": {
+        "creationTimestamp": "2018-07-16T09:59:05Z",
+        "labels": {
+          "app": "rabbitmq",
+          "chart": "rabbitmq-1.1.9",
+          "heritage": "Tiller",
+          "release": "gauche-abalone"
+        },
+        "name": "gauche-abalone-rabbitmq",
+        "namespace": "$NAMESPACE",
+        "resourceVersion": "6309",
+        "selfLink": "/api/v1/namespaces/default/secrets/gauche-abalone-rabbitmq",
+        "uid": "e024b8fa-88de-11e8-aebd-0a58ac1f16cd"
+      },
+      "type": "Opaque"
+    },
+    {
+      "apiVersion": "v1",
+      "data": {
+        "ca.crt": "LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUV4ekNDQXErZ0F3SUJBZ0lRSkdhWngxaFRhVG10N1ZYaTlTKzVXekFOQmdrcWhraUc5dzBCQVFzRkFEQU4KTVFzd0NRWURWUVFERXdKallUQWVGdzB4T0RBM01UWXdPRFV5TVRWYUZ3MHlNREEzTVRVd09EVXlNVFZhTUEweApDekFKQmdOVkJBTVRBbU5oTUlJQ0lqQU5CZ2txaGtpRzl3MEJBUUVGQUFPQ0FnOEFNSUlDQ2dLQ0FnRUFzRG9ICkRTaTZrZ2xtOXI4UlBnT2duUFhzcmJaZTdFTFhOSkZkZmp1UEE5VWEvVmFZRXVKVndIdmorcDNsWHE1UUMxQVEKN2N1YnlZSHNzZzN4UjhmYk9VSFVyWXV4Y1hsWXFKWGprb1FuTy9wZDJjQnF2aC9yUVB6ckhEcW45cThHbHhDTgpEa3MrUVVLbG5XWStEWHNqb3VrbFpCdGkxc0JxTEwyZU85RDdlcFpGMDc2VXBZVFJWOXRsUlgrSVVJYXR5RFRuCi94WHFtcWZnNGFOUHQyNCsyZk1lV2lVSHJvZ1hRRzBCNnF3M2VUQThnRm9iUlpGUFJucm1pOGhVd2JYWm8xQ0MKUXBRck9pOFFZZ2tIU1RHcTFsM3pYdm5adDdTaDJEQnd6OXZpTFY3c0lqRGRtdFpJUXloQzZXNHJjQ1FSNUR0bQpSYlo2Qno0QklGb0tpWTQ2NStlU2JXNTZPVE9XcXlNVTErQWVlR1Q0Y2VPZlo2djdqZmFFRzB0bDUxNVoyL1psClpaT3AwclB1VTFPejArc0IrRWtudzBucjFMWFAwZWdqMERkQjh4UWpqaG42cFNUTHN5UmtSUlQ1L2tlOXgzMjIKQ1BKZGZ6YzRMK25tMWtOSU1XT3dtRi9TZStqWUFla2YzUzNVaGh2eXZuUVZRUTcxL1hkMW5vbGg0TUFGcUdJWQpGdmgxTW9Gc1BTcEprUjFJMEo5Y1dNYjZWYjRZUlZQUGJzZDFXYVJMRy94aVlYVjJ0N1ZoQ05TOEZjbC9XN2hiCmtNSVpjcm0yeFRTNk1RaXNZaGN2cVY3WkVaYlRhMjJLU25UMFA3VDcvU0ZJRXVMWUY5NjNZMWk0VlFQdk9sdVgKYU5qZk9kYStHVm5GaUhjNWhvR1MxL0hLa0lXTFN2VnY2aERsYWFNQ0F3RUFBYU1qTUNFd0RnWURWUjBQQVFILwpCQVFEQWdLa01BOEdBMVVkRXdFQi93UUZNQU1CQWY4d0RRWUpLb1pJaHZjTkFRRUxCUUFEZ2dJQkFGY1BsSHJJCnJQa1g4bmk4dk5Ma2NoNFdSY29TVkR5dEdkUzZQUjd6bWZTUE1OVWtHNnRjbDlCS0hDQ2J1T1ZpeDZyTEUrcTMKNzlCelFXYTNEOWp1OEphRmdVWjZveUxIQkN3RGFhVXI5YUhjVTBBZmRuSTVzRXBPbjBYcXQrcksrYnFiV2Y4ZgptMnl1QzIwNXFISEJ4Z2JtNm5zWDZPQmpSZ3AvL3pnT0hJT1BtZUVWR3JQL044VFFhS2VxNVc4am8yN0VBRGxtCkNSOW9NOFA0TC9TdG9XNy9CcEhDZ2FOckJ6T2NLRWJWZkdLSGU5UTZ5VTVKK1NHcER3NUh2aVV1M3gwRUEweU4KaUtVdmFkOFJVZzhxejlHR2lqZmJlTzVBeWlnanovVmFLUEhBRGlxc2o4YmdvbUpGMFRMS3JmaURrc201V1NqVApBbFVHRXQwbTBqQ2NSWVBWVzJoUkI1N0ZBck54VFkvQ1laemM5STFPQzZCWjRJLzh5WCtEd080REI0OXF3Z1BRCnFmTGZhUEdYcTlyM1M4blAyYVdZQldJUERndWY0SnZ5YUhqRGtpL0orYmlldkVuSURYeG00cDA5NFVJRkFOakIKVTJ6VkVhV3F6ZWtMQzYxZ0lYcFlMc21PQlJPcytnd2UybERURXEzc2ZobFkzSUY0LzdhM3VlSFZmSmhHZnNVWgo2SlRHMUZPOUxUb0V6Y1FXNUZFR3ltWlFnZGZrU3BYSkE4MzQwRFpZM0ZDMFNva3RqZ0dBTExKQ0tMaDJmNzZHClFJYkxWckhoc1FBbG9wcjhTai85Z2w4K081bERYMW9FSFUvenVxclZyNytZNmhPMFpoMWFSTXVYT1QzTUdmZ2cKejlMaWk1cTV0c0FJWGJJZDFUOU9HemNBY01qNFkwVC9oL1QxCi0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0K",
+        "namespace": "ZGVmYXVsdA==",
+        "token": "ZXlKaGJHY2lPaUpTVXpJMU5pSXNJbXRwWkNJNklpSjkuZXlKcGMzTWlPaUpyZFdKbGNtNWxkR1Z6TDNObGNuWnBZMlZoWTJOdmRXNTBJaXdpYTNWaVpYSnVaWFJsY3k1cGJ5OXpaWEoyYVdObFlXTmpiM1Z1ZEM5dVlXMWxjM0JoWTJVaU9pSmtaV1poZFd4MElpd2lhM1ZpWlhKdVpYUmxjeTVwYnk5elpYSjJhV05sWVdOamIzVnVkQzl6WldOeVpYUXVibUZ0WlNJNkltZGhkV05vWlMxaFltRnNiMjVsTFhKaFltSnBkRzF4TFhSdmEyVnVMWFE0WjJacUlpd2lhM1ZpWlhKdVpYUmxjeTVwYnk5elpYSjJhV05sWVdOamIzVnVkQzl6WlhKMmFXTmxMV0ZqWTI5MWJuUXVibUZ0WlNJNkltZGhkV05vWlMxaFltRnNiMjVsTFhKaFltSnBkRzF4SWl3aWEzVmlaWEp1WlhSbGN5NXBieTl6WlhKMmFXTmxZV05qYjNWdWRDOXpaWEoyYVdObExXRmpZMjkxYm5RdWRXbGtJam9pWlRBek1tRXhNemd0T0Roa1pTMHhNV1U0TFdGbFltUXRNR0UxT0dGak1XWXhObU5rSWl3aWMzVmlJam9pYzNsemRHVnRPbk5sY25acFkyVmhZMk52ZFc1ME9tUmxabUYxYkhRNloyRjFZMmhsTFdGaVlXeHZibVV0Y21GaVltbDBiWEVpZlEuSk5xbk1TSXMzWjB0WFNqS3llVFgyUWZCSDhtNklKRjJBU0RnNWFDUGJrX0F4WmdtZjhUZUVDdlV6dkFlbTkzVjBMUUZSOWFKTUhrN0RqcVRVNEZqbWpISGd5ZFpUSUhKMExVaUNxdTdPNXgtMzVMeEIzdHR2bl85WVhXWVhTbUl6SE1jaUlXbVJibHN1cjAyVjhTdGh6ZkhPb05XRjZSbVdBajlrTzlVRkFuWnBFMl9RbU9Wd3piS3I1R0J4dHJvLW1tdldsS2dlVTJkTkdGczcyZGhlM3pjbTFXb1dwVnNaVzNaYjVzYW42aFZyR3ZVR1plaUVDV2J4bHBENXNDTkZpdmRKTmZOM2ExQ2hGeTI0U2lqRWxLRllDaDdLMGZyVXd5NXRfRDFHc3ZfcXRsUDdlTkJleXJONTRIT2dseDUyRTlRTWhMMm5UZmVNRjJNWW4xVnNZZnYyZGt0Z3hTVVd6SFBfb1N4UmtBTGplSUQ3X2h2NGsySXQ4RExqNmtaM1k2YUhQUUJQUE5UZkI0UjZxdnpRTkZrLUxKUl8zazB2S2lwMHFQMUJsY1RBbHc3LTBjaWR2eHhSSEl6aEJrSXdOVDhLa2oxZlRxNHJUaDdmQmx6b1hmX2tJaktHNGtidGJzM2hBWXNqNzU5MjBMQ3dHQy1IZHN0dlo5YkZiNXJsanp2MHFJMXpSWTB0RVBvV2JaYjBLN1NIbFJBVlRXMlVISnBvcDEzaUpCdzhELXNPZkppeGplSGRuX1U4dmU0Q3FRcmZSOU1IODduVlRsZW1qNzFLUVdMUk9yYmxhOEVLbUlYWXZiZUptR1RiRlFCWWdLMV91Z0xjWG1GdU5DaG5TWnJyemh5Q3lZYVRyYjgyZWp6RFNHZ0FNbDJ4cU8tYXpXajBQc1FUSE0="
+      },
+      "kind": "Secret",
+      "metadata": {
+        "annotations": {
+          "kubernetes.io/service-account.name": "gauche-abalone-rabbitmq",
+          "kubernetes.io/service-account.uid": "e032a138-88de-11e8-aebd-0a58ac1f16cd"
+        },
+        "creationTimestamp": "2018-07-16T09:59:06Z",
+        "name": "gauche-abalone-rabbitmq-token-t8gfj",
+        "namespace": "$NAMESPACE",
+        "resourceVersion": "6312",
+        "selfLink": "/api/v1/namespaces/default/secrets/gauche-abalone-rabbitmq-token-t8gfj",
+        "uid": "e03a98d2-88de-11e8-aebd-0a58ac1f16cd"
+      },
+      "type": "kubernetes.io/service-account-token"
+    },
+    {
+      "apiVersion": "v1",
+      "data": {
+        "jenkins-admin-password": "ZXplRnpXTkdkTA==",
+        "jenkins-admin-user": "YWRtaW4="
+      },
+      "kind": "Secret",
+      "metadata": {
+        "creationTimestamp": "2018-07-16T14:20:49Z",
+        "labels": {
+          "app": "jenkins",
+          "chart": "jenkins-0.16.6",
+          "heritage": "Tiller",
+          "release": "jenkins"
+        },
+        "name": "jenkins",
+        "namespace": "$NAMESPACE",
+        "resourceVersion": "33271",
+        "selfLink": "/api/v1/namespaces/default/secrets/jenkins",
+        "uid": "70478587-8903-11e8-aebd-0a58ac1f16cd"
+      },
+      "type": "Opaque"
+    },
+    {
+      "apiVersion": "v1",
+      "data": {
+        "rabbitmq-erlang-cookie": "QXQ2eXVTcWlrbTVETmFZbDJyNGVwVktFdlhQTnVDVGQ=",
+        "rabbitmq-password": "X2hZISdEWCpBSiY7S1NlbUMiT0tQKkwi"
+      },
+      "kind": "Secret",
+      "metadata": {
+        "creationTimestamp": "2018-07-16T10:04:26Z",
+        "labels": {
+          "app": "rabbitmq-ha",
+          "chart": "rabbitmq-ha-1.6.3",
+          "heritage": "Tiller",
+          "release": "kindred-hamster"
+        },
+        "name": "kindred-hamster-rabbitmq-ha",
+        "namespace": "$NAMESPACE",
+        "resourceVersion": "7028",
+        "selfLink": "/api/v1/namespaces/default/secrets/kindred-hamster-rabbitmq-ha",
+        "uid": "9f3e6ab0-88df-11e8-aebd-0a58ac1f16cd"
+      },
+      "type": "Opaque"
+    },
+    {
+      "apiVersion": "v1",
+      "data": {
+        "ca.crt": "LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUV4ekNDQXErZ0F3SUJBZ0lRSkdhWngxaFRhVG10N1ZYaTlTKzVXekFOQmdrcWhraUc5dzBCQVFzRkFEQU4KTVFzd0NRWURWUVFERXdKallUQWVGdzB4T0RBM01UWXdPRFV5TVRWYUZ3MHlNREEzTVRVd09EVXlNVFZhTUEweApDekFKQmdOVkJBTVRBbU5oTUlJQ0lqQU5CZ2txaGtpRzl3MEJBUUVGQUFPQ0FnOEFNSUlDQ2dLQ0FnRUFzRG9ICkRTaTZrZ2xtOXI4UlBnT2duUFhzcmJaZTdFTFhOSkZkZmp1UEE5VWEvVmFZRXVKVndIdmorcDNsWHE1UUMxQVEKN2N1YnlZSHNzZzN4UjhmYk9VSFVyWXV4Y1hsWXFKWGprb1FuTy9wZDJjQnF2aC9yUVB6ckhEcW45cThHbHhDTgpEa3MrUVVLbG5XWStEWHNqb3VrbFpCdGkxc0JxTEwyZU85RDdlcFpGMDc2VXBZVFJWOXRsUlgrSVVJYXR5RFRuCi94WHFtcWZnNGFOUHQyNCsyZk1lV2lVSHJvZ1hRRzBCNnF3M2VUQThnRm9iUlpGUFJucm1pOGhVd2JYWm8xQ0MKUXBRck9pOFFZZ2tIU1RHcTFsM3pYdm5adDdTaDJEQnd6OXZpTFY3c0lqRGRtdFpJUXloQzZXNHJjQ1FSNUR0bQpSYlo2Qno0QklGb0tpWTQ2NStlU2JXNTZPVE9XcXlNVTErQWVlR1Q0Y2VPZlo2djdqZmFFRzB0bDUxNVoyL1psClpaT3AwclB1VTFPejArc0IrRWtudzBucjFMWFAwZWdqMERkQjh4UWpqaG42cFNUTHN5UmtSUlQ1L2tlOXgzMjIKQ1BKZGZ6YzRMK25tMWtOSU1XT3dtRi9TZStqWUFla2YzUzNVaGh2eXZuUVZRUTcxL1hkMW5vbGg0TUFGcUdJWQpGdmgxTW9Gc1BTcEprUjFJMEo5Y1dNYjZWYjRZUlZQUGJzZDFXYVJMRy94aVlYVjJ0N1ZoQ05TOEZjbC9XN2hiCmtNSVpjcm0yeFRTNk1RaXNZaGN2cVY3WkVaYlRhMjJLU25UMFA3VDcvU0ZJRXVMWUY5NjNZMWk0VlFQdk9sdVgKYU5qZk9kYStHVm5GaUhjNWhvR1MxL0hLa0lXTFN2VnY2aERsYWFNQ0F3RUFBYU1qTUNFd0RnWURWUjBQQVFILwpCQVFEQWdLa01BOEdBMVVkRXdFQi93UUZNQU1CQWY4d0RRWUpLb1pJaHZjTkFRRUxCUUFEZ2dJQkFGY1BsSHJJCnJQa1g4bmk4dk5Ma2NoNFdSY29TVkR5dEdkUzZQUjd6bWZTUE1OVWtHNnRjbDlCS0hDQ2J1T1ZpeDZyTEUrcTMKNzlCelFXYTNEOWp1OEphRmdVWjZveUxIQkN3RGFhVXI5YUhjVTBBZmRuSTVzRXBPbjBYcXQrcksrYnFiV2Y4ZgptMnl1QzIwNXFISEJ4Z2JtNm5zWDZPQmpSZ3AvL3pnT0hJT1BtZUVWR3JQL044VFFhS2VxNVc4am8yN0VBRGxtCkNSOW9NOFA0TC9TdG9XNy9CcEhDZ2FOckJ6T2NLRWJWZkdLSGU5UTZ5VTVKK1NHcER3NUh2aVV1M3gwRUEweU4KaUtVdmFkOFJVZzhxejlHR2lqZmJlTzVBeWlnanovVmFLUEhBRGlxc2o4YmdvbUpGMFRMS3JmaURrc201V1NqVApBbFVHRXQwbTBqQ2NSWVBWVzJoUkI1N0ZBck54VFkvQ1laemM5STFPQzZCWjRJLzh5WCtEd080REI0OXF3Z1BRCnFmTGZhUEdYcTlyM1M4blAyYVdZQldJUERndWY0SnZ5YUhqRGtpL0orYmlldkVuSURYeG00cDA5NFVJRkFOakIKVTJ6VkVhV3F6ZWtMQzYxZ0lYcFlMc21PQlJPcytnd2UybERURXEzc2ZobFkzSUY0LzdhM3VlSFZmSmhHZnNVWgo2SlRHMUZPOUxUb0V6Y1FXNUZFR3ltWlFnZGZrU3BYSkE4MzQwRFpZM0ZDMFNva3RqZ0dBTExKQ0tMaDJmNzZHClFJYkxWckhoc1FBbG9wcjhTai85Z2w4K081bERYMW9FSFUvenVxclZyNytZNmhPMFpoMWFSTXVYT1QzTUdmZ2cKejlMaWk1cTV0c0FJWGJJZDFUOU9HemNBY01qNFkwVC9oL1QxCi0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0K",
+        "namespace": "ZGVmYXVsdA==",
+        "token": "ZXlKaGJHY2lPaUpTVXpJMU5pSXNJbXRwWkNJNklpSjkuZXlKcGMzTWlPaUpyZFdKbGNtNWxkR1Z6TDNObGNuWnBZMlZoWTJOdmRXNTBJaXdpYTNWaVpYSnVaWFJsY3k1cGJ5OXpaWEoyYVdObFlXTmpiM1Z1ZEM5dVlXMWxjM0JoWTJVaU9pSmtaV1poZFd4MElpd2lhM1ZpWlhKdVpYUmxjeTVwYnk5elpYSjJhV05sWVdOamIzVnVkQzl6WldOeVpYUXVibUZ0WlNJNkltdHBibVJ5WldRdGFHRnRjM1JsY2kxeVlXSmlhWFJ0Y1Mxb1lTMTBiMnRsYmkwME5EUnJZaUlzSW10MVltVnlibVYwWlhNdWFXOHZjMlZ5ZG1salpXRmpZMjkxYm5RdmMyVnlkbWxqWlMxaFkyTnZkVzUwTG01aGJXVWlPaUpyYVc1a2NtVmtMV2hoYlhOMFpYSXRjbUZpWW1sMGJYRXRhR0VpTENKcmRXSmxjbTVsZEdWekxtbHZMM05sY25acFkyVmhZMk52ZFc1MEwzTmxjblpwWTJVdFlXTmpiM1Z1ZEM1MWFXUWlPaUk1WmpSaFpUY3daUzA0T0dSbUxURXhaVGd0WVdWaVpDMHdZVFU0WVdNeFpqRTJZMlFpTENKemRXSWlPaUp6ZVhOMFpXMDZjMlZ5ZG1salpXRmpZMjkxYm5RNlpHVm1ZWFZzZERwcmFXNWtjbVZrTFdoaGJYTjBaWEl0Y21GaVltbDBiWEV0YUdFaWZRLlpKc2xVZHZuSDEwQW9mNEFkQnNFYjlhb3pqSFZ1cWVRQ0dnUF9Pa0dIRm9Qb0NCZjI0ZWFXS3FtTzdQN2owRlRXLW5naWhFdDVnaVVIZ2JzMjc1SkRpWVBiRVp3U3J1QV9pdVhKUXlZZUZXS3RUMFROXzFtbTlzODlnTHFYcWJaOUZxTjNKZEtPYzVBdjV5Q3AyM0VSNUxvbnlDMm1kVDEyX2dRenk5VGN3ZDMzV1N5bGlzeWtfTVJIY3h1UzVQZGtsVzVPWFVlbUIxOFdLUlRIc1R0cGdhSFBTYnFWNk5fUHkwUm9UYmdZRzlwNlEwanJ3aW5EZHdNLURVS2tBRng1NXpCaXpkNWVGMzlOSjFNZkRGbk5KN2FrdThWVUFWUkxGQ3dyMXB3TEFxMmNWYTFSSjBuYk5zdzhPY1ZJYUtEaGw1bE11dmtqVGpqT2JzYXUxSFpSVl9qSFNSby1IXzZ1T1VGb3pvTUhTWElYTEV6aGJwU3BpSDVXQ2VsM1BmRDFPb3FCWWxzdkFSdjdJQ29EWFFZMzZhalFwUWFGbUNwMjcxeTd4TnR1SjlobGdEN2QyR0MwOEc1dVRTcmlsal9kcG9mQW5yVWxNUHVGQ1ZJQ1F6N1BfS29lS3MwSWM0Q2xldWFYOVB0ZlhyUHZ0aXRBOV9icEZDaHBhTU5sZm1VLVRXZ21rZm91Z0NsNHh6aThQSElhSWpJXzNKbW9VZ0pMLXpySHFXaTh0NERoYnJGdDd5U0M4Z0VVRWgtRHR3VjRSLWxJc09YT2x1NURlOFBLMU9fX2ROTU1kcng2WWlWellGUEFRRlhJYno0bkRZaHZxdU1vRTd4X0dGNHZGdXd6dW5XenFnb3pGRXlZSURLM0N5SkJBZm5vOF9IRGdMWEdSMDVOM2p1Z0dZ"
+      },
+      "kind": "Secret",
+      "metadata": {
+        "annotations": {
+          "kubernetes.io/service-account.name": "kindred-hamster-rabbitmq-ha",
+          "kubernetes.io/service-account.uid": "9f4ae70e-88df-11e8-aebd-0a58ac1f16cd"
+        },
+        "creationTimestamp": "2018-07-16T10:04:26Z",
+        "name": "kindred-hamster-rabbitmq-ha-token-444kb",
+        "namespace": "$NAMESPACE",
+        "resourceVersion": "7031",
+        "selfLink": "/api/v1/namespaces/default/secrets/kindred-hamster-rabbitmq-ha-token-444kb",
+        "uid": "9f5152d4-88df-11e8-aebd-0a58ac1f16cd"
+      },
+      "type": "kubernetes.io/service-account-token"
+    },
+    {
+      "apiVersion": "v1",
+      "data": {
+        "rabbitmq-erlang-cookie": "bTVVYmhJbW1FWWhRdWNwa3pYQWszVzJOdGgxaVpzZHo=",
+        "rabbitmq-password": "IV46JGAqW1hAO0FiYDFbSFMpW0M9ZU9s"
+      },
+      "kind": "Secret",
+      "metadata": {
+        "creationTimestamp": "2018-07-16T10:08:23Z",
+        "labels": {
+          "app": "rabbitmq-ha",
+          "chart": "rabbitmq-ha-1.6.3",
+          "heritage": "Tiller",
+          "release": "opining-ibex"
+        },
+        "name": "opining-ibex-rabbitmq-ha",
+        "namespace": "$NAMESPACE",
+        "resourceVersion": "7492",
+        "selfLink": "/api/v1/namespaces/default/secrets/opining-ibex-rabbitmq-ha",
+        "uid": "2c39a9b9-88e0-11e8-aebd-0a58ac1f16cd"
+      },
+      "type": "Opaque"
+    },
+    {
+      "apiVersion": "v1",
+      "data": {
+        "ca.crt": "LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUV4ekNDQXErZ0F3SUJBZ0lRSkdhWngxaFRhVG10N1ZYaTlTKzVXekFOQmdrcWhraUc5dzBCQVFzRkFEQU4KTVFzd0NRWURWUVFERXdKallUQWVGdzB4T0RBM01UWXdPRFV5TVRWYUZ3MHlNREEzTVRVd09EVXlNVFZhTUEweApDekFKQmdOVkJBTVRBbU5oTUlJQ0lqQU5CZ2txaGtpRzl3MEJBUUVGQUFPQ0FnOEFNSUlDQ2dLQ0FnRUFzRG9ICkRTaTZrZ2xtOXI4UlBnT2duUFhzcmJaZTdFTFhOSkZkZmp1UEE5VWEvVmFZRXVKVndIdmorcDNsWHE1UUMxQVEKN2N1YnlZSHNzZzN4UjhmYk9VSFVyWXV4Y1hsWXFKWGprb1FuTy9wZDJjQnF2aC9yUVB6ckhEcW45cThHbHhDTgpEa3MrUVVLbG5XWStEWHNqb3VrbFpCdGkxc0JxTEwyZU85RDdlcFpGMDc2VXBZVFJWOXRsUlgrSVVJYXR5RFRuCi94WHFtcWZnNGFOUHQyNCsyZk1lV2lVSHJvZ1hRRzBCNnF3M2VUQThnRm9iUlpGUFJucm1pOGhVd2JYWm8xQ0MKUXBRck9pOFFZZ2tIU1RHcTFsM3pYdm5adDdTaDJEQnd6OXZpTFY3c0lqRGRtdFpJUXloQzZXNHJjQ1FSNUR0bQpSYlo2Qno0QklGb0tpWTQ2NStlU2JXNTZPVE9XcXlNVTErQWVlR1Q0Y2VPZlo2djdqZmFFRzB0bDUxNVoyL1psClpaT3AwclB1VTFPejArc0IrRWtudzBucjFMWFAwZWdqMERkQjh4UWpqaG42cFNUTHN5UmtSUlQ1L2tlOXgzMjIKQ1BKZGZ6YzRMK25tMWtOSU1XT3dtRi9TZStqWUFla2YzUzNVaGh2eXZuUVZRUTcxL1hkMW5vbGg0TUFGcUdJWQpGdmgxTW9Gc1BTcEprUjFJMEo5Y1dNYjZWYjRZUlZQUGJzZDFXYVJMRy94aVlYVjJ0N1ZoQ05TOEZjbC9XN2hiCmtNSVpjcm0yeFRTNk1RaXNZaGN2cVY3WkVaYlRhMjJLU25UMFA3VDcvU0ZJRXVMWUY5NjNZMWk0VlFQdk9sdVgKYU5qZk9kYStHVm5GaUhjNWhvR1MxL0hLa0lXTFN2VnY2aERsYWFNQ0F3RUFBYU1qTUNFd0RnWURWUjBQQVFILwpCQVFEQWdLa01BOEdBMVVkRXdFQi93UUZNQU1CQWY4d0RRWUpLb1pJaHZjTkFRRUxCUUFEZ2dJQkFGY1BsSHJJCnJQa1g4bmk4dk5Ma2NoNFdSY29TVkR5dEdkUzZQUjd6bWZTUE1OVWtHNnRjbDlCS0hDQ2J1T1ZpeDZyTEUrcTMKNzlCelFXYTNEOWp1OEphRmdVWjZveUxIQkN3RGFhVXI5YUhjVTBBZmRuSTVzRXBPbjBYcXQrcksrYnFiV2Y4ZgptMnl1QzIwNXFISEJ4Z2JtNm5zWDZPQmpSZ3AvL3pnT0hJT1BtZUVWR3JQL044VFFhS2VxNVc4am8yN0VBRGxtCkNSOW9NOFA0TC9TdG9XNy9CcEhDZ2FOckJ6T2NLRWJWZkdLSGU5UTZ5VTVKK1NHcER3NUh2aVV1M3gwRUEweU4KaUtVdmFkOFJVZzhxejlHR2lqZmJlTzVBeWlnanovVmFLUEhBRGlxc2o4YmdvbUpGMFRMS3JmaURrc201V1NqVApBbFVHRXQwbTBqQ2NSWVBWVzJoUkI1N0ZBck54VFkvQ1laemM5STFPQzZCWjRJLzh5WCtEd080REI0OXF3Z1BRCnFmTGZhUEdYcTlyM1M4blAyYVdZQldJUERndWY0SnZ5YUhqRGtpL0orYmlldkVuSURYeG00cDA5NFVJRkFOakIKVTJ6VkVhV3F6ZWtMQzYxZ0lYcFlMc21PQlJPcytnd2UybERURXEzc2ZobFkzSUY0LzdhM3VlSFZmSmhHZnNVWgo2SlRHMUZPOUxUb0V6Y1FXNUZFR3ltWlFnZGZrU3BYSkE4MzQwRFpZM0ZDMFNva3RqZ0dBTExKQ0tMaDJmNzZHClFJYkxWckhoc1FBbG9wcjhTai85Z2w4K081bERYMW9FSFUvenVxclZyNytZNmhPMFpoMWFSTXVYT1QzTUdmZ2cKejlMaWk1cTV0c0FJWGJJZDFUOU9HemNBY01qNFkwVC9oL1QxCi0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0K",
+        "namespace": "ZGVmYXVsdA==",
+        "token": "ZXlKaGJHY2lPaUpTVXpJMU5pSXNJbXRwWkNJNklpSjkuZXlKcGMzTWlPaUpyZFdKbGNtNWxkR1Z6TDNObGNuWnBZMlZoWTJOdmRXNTBJaXdpYTNWaVpYSnVaWFJsY3k1cGJ5OXpaWEoyYVdObFlXTmpiM1Z1ZEM5dVlXMWxjM0JoWTJVaU9pSmtaV1poZFd4MElpd2lhM1ZpWlhKdVpYUmxjeTVwYnk5elpYSjJhV05sWVdOamIzVnVkQzl6WldOeVpYUXVibUZ0WlNJNkltOXdhVzVwYm1jdGFXSmxlQzF5WVdKaWFYUnRjUzFvWVMxMGIydGxiaTAyYkc1cVpDSXNJbXQxWW1WeWJtVjBaWE11YVc4dmMyVnlkbWxqWldGalkyOTFiblF2YzJWeWRtbGpaUzFoWTJOdmRXNTBMbTVoYldVaU9pSnZjR2x1YVc1bkxXbGlaWGd0Y21GaVltbDBiWEV0YUdFaUxDSnJkV0psY201bGRHVnpMbWx2TDNObGNuWnBZMlZoWTJOdmRXNTBMM05sY25acFkyVXRZV05qYjNWdWRDNTFhV1FpT2lJeVl6UmhNREV6WmkwNE9HVXdMVEV4WlRndFlXVmlaQzB3WVRVNFlXTXhaakUyWTJRaUxDSnpkV0lpT2lKemVYTjBaVzA2YzJWeWRtbGpaV0ZqWTI5MWJuUTZaR1ZtWVhWc2REcHZjR2x1YVc1bkxXbGlaWGd0Y21GaVltbDBiWEV0YUdFaWZRLm52ckNXRW81V1RBVGJ6b1N4RzViME1ncW9NZTN3TVBZSjJQc3hFbmtkQWVzX0kxRTcxN0gzaEZPemgtdkNLcTBhSGxtbXpzLUoyNnJuakI0d0ZPb19qRlk3N1VBNXNjemNKMjNPZnNWbW1zc3VycHdXMWRqT2Q4NkVsUnQwdEdEdGdHdS1KenZPUXFqRzVfc2xGbXVUT3RhSFQ4OVVaSlhjd2t4SjdEYmhQYmlxZHFYOEhCMDBGbGR0cEFFRDhSYUZ1MlBTVl9FNnZhVkZaUWdZa3hGTjh1eTJDY1FVRklqb0cxMXBUYjZvczVLUDVCV2VUV0xJeTZQX2ttR2Qxc3RLSUUtcVlpazRkTnBVb0lwYWEwWnNmR3BsYWVHZVZUczBzdmJrQ1ZKNEFrQTRETjhIVmtSX09pM2ltSFZESThKczFYd0w4V0VtTGVybC1XNGMxYThTVXRYTzJKZzRfNzVUTnY4TnlpclAxZ0dHbElrUkFZWXMzeFJ1VjJ0MVhPWDMzM1NWSDRCX3BwSEZlQ0tBUVVwVDhMWmlPa3Y1ZGN1WmFsYUlybU9OTHQyVFpaQWJEa2x3YXBYdnotenFESHM3bHNKYWxXREVpYTk4em9QWTZaeVZuY2xMMGMyNzZrMlNkbkl5Y1VvR1BqWHRnMnJ5dzZ3VGlrTnY2eGdzRGx6bUJyZHNLaHA4R001V2hVTlhfWnJRSWpHbUdGaTBmb2lidEViZlNHZzZsTk5pSE5fQ2l2azg2RGp3VEFBeGw0SWNSZklCa2Jwc1FjNHVlZGpYSGtnTVlfOEk0MXZxUlJiZEtQbXBQWVNnT3JqVXdLM3F2eVJ1RS1UZ08zQjVrMUY0a1A2SE53TzhnRzhDeHdsdEZkRmNvUEFXNE93bUVueUh4QkJ0empDWlRR"
+      },
+      "kind": "Secret",
+      "metadata": {
+        "annotations": {
+          "kubernetes.io/service-account.name": "opining-ibex-rabbitmq-ha",
+          "kubernetes.io/service-account.uid": "2c4a013f-88e0-11e8-aebd-0a58ac1f16cd"
+        },
+        "creationTimestamp": "2018-07-16T10:08:23Z",
+        "name": "opining-ibex-rabbitmq-ha-token-6lnjd",
+        "namespace": "$NAMESPACE",
+        "resourceVersion": "7495",
+        "selfLink": "/api/v1/namespaces/default/secrets/opining-ibex-rabbitmq-ha-token-6lnjd",
+        "uid": "2c50a300-88e0-11e8-aebd-0a58ac1f16cd"
+      },
+      "type": "kubernetes.io/service-account-token"
+    },
+    {
+      "apiVersion": "v1",
+      "data": {
+        "rabbitmq-erlang-cookie": "MXlONks2bEozZ2x1OWdkc2p6WWpTOHV5YWpLRER3amY=",
+        "rabbitmq-password": "Uztrem5+NWlaQG80I1IzX1M9aXhMRHc="
+      },
+      "kind": "Secret",
+      "metadata": {
+        "creationTimestamp": "2018-07-16T10:01:26Z",
+        "labels": {
+          "app": "rabbitmq-ha",
+          "chart": "rabbitmq-ha-1.6.3",
+          "heritage": "Tiller",
+          "release": "right-wolf"
+        },
+        "name": "right-wolf-rabbitmq-ha",
+        "namespace": "$NAMESPACE",
+        "resourceVersion": "6522",
+        "selfLink": "/api/v1/namespaces/default/secrets/right-wolf-rabbitmq-ha",
+        "uid": "33c80fb8-88df-11e8-aebd-0a58ac1f16cd"
+      },
+      "type": "Opaque"
+    },
+    {
+      "apiVersion": "v1",
+      "data": {
+        "ca.crt": "LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUV4ekNDQXErZ0F3SUJBZ0lRSkdhWngxaFRhVG10N1ZYaTlTKzVXekFOQmdrcWhraUc5dzBCQVFzRkFEQU4KTVFzd0NRWURWUVFERXdKallUQWVGdzB4T0RBM01UWXdPRFV5TVRWYUZ3MHlNREEzTVRVd09EVXlNVFZhTUEweApDekFKQmdOVkJBTVRBbU5oTUlJQ0lqQU5CZ2txaGtpRzl3MEJBUUVGQUFPQ0FnOEFNSUlDQ2dLQ0FnRUFzRG9ICkRTaTZrZ2xtOXI4UlBnT2duUFhzcmJaZTdFTFhOSkZkZmp1UEE5VWEvVmFZRXVKVndIdmorcDNsWHE1UUMxQVEKN2N1YnlZSHNzZzN4UjhmYk9VSFVyWXV4Y1hsWXFKWGprb1FuTy9wZDJjQnF2aC9yUVB6ckhEcW45cThHbHhDTgpEa3MrUVVLbG5XWStEWHNqb3VrbFpCdGkxc0JxTEwyZU85RDdlcFpGMDc2VXBZVFJWOXRsUlgrSVVJYXR5RFRuCi94WHFtcWZnNGFOUHQyNCsyZk1lV2lVSHJvZ1hRRzBCNnF3M2VUQThnRm9iUlpGUFJucm1pOGhVd2JYWm8xQ0MKUXBRck9pOFFZZ2tIU1RHcTFsM3pYdm5adDdTaDJEQnd6OXZpTFY3c0lqRGRtdFpJUXloQzZXNHJjQ1FSNUR0bQpSYlo2Qno0QklGb0tpWTQ2NStlU2JXNTZPVE9XcXlNVTErQWVlR1Q0Y2VPZlo2djdqZmFFRzB0bDUxNVoyL1psClpaT3AwclB1VTFPejArc0IrRWtudzBucjFMWFAwZWdqMERkQjh4UWpqaG42cFNUTHN5UmtSUlQ1L2tlOXgzMjIKQ1BKZGZ6YzRMK25tMWtOSU1XT3dtRi9TZStqWUFla2YzUzNVaGh2eXZuUVZRUTcxL1hkMW5vbGg0TUFGcUdJWQpGdmgxTW9Gc1BTcEprUjFJMEo5Y1dNYjZWYjRZUlZQUGJzZDFXYVJMRy94aVlYVjJ0N1ZoQ05TOEZjbC9XN2hiCmtNSVpjcm0yeFRTNk1RaXNZaGN2cVY3WkVaYlRhMjJLU25UMFA3VDcvU0ZJRXVMWUY5NjNZMWk0VlFQdk9sdVgKYU5qZk9kYStHVm5GaUhjNWhvR1MxL0hLa0lXTFN2VnY2aERsYWFNQ0F3RUFBYU1qTUNFd0RnWURWUjBQQVFILwpCQVFEQWdLa01BOEdBMVVkRXdFQi93UUZNQU1CQWY4d0RRWUpLb1pJaHZjTkFRRUxCUUFEZ2dJQkFGY1BsSHJJCnJQa1g4bmk4dk5Ma2NoNFdSY29TVkR5dEdkUzZQUjd6bWZTUE1OVWtHNnRjbDlCS0hDQ2J1T1ZpeDZyTEUrcTMKNzlCelFXYTNEOWp1OEphRmdVWjZveUxIQkN3RGFhVXI5YUhjVTBBZmRuSTVzRXBPbjBYcXQrcksrYnFiV2Y4ZgptMnl1QzIwNXFISEJ4Z2JtNm5zWDZPQmpSZ3AvL3pnT0hJT1BtZUVWR3JQL044VFFhS2VxNVc4am8yN0VBRGxtCkNSOW9NOFA0TC9TdG9XNy9CcEhDZ2FOckJ6T2NLRWJWZkdLSGU5UTZ5VTVKK1NHcER3NUh2aVV1M3gwRUEweU4KaUtVdmFkOFJVZzhxejlHR2lqZmJlTzVBeWlnanovVmFLUEhBRGlxc2o4YmdvbUpGMFRMS3JmaURrc201V1NqVApBbFVHRXQwbTBqQ2NSWVBWVzJoUkI1N0ZBck54VFkvQ1laemM5STFPQzZCWjRJLzh5WCtEd080REI0OXF3Z1BRCnFmTGZhUEdYcTlyM1M4blAyYVdZQldJUERndWY0SnZ5YUhqRGtpL0orYmlldkVuSURYeG00cDA5NFVJRkFOakIKVTJ6VkVhV3F6ZWtMQzYxZ0lYcFlMc21PQlJPcytnd2UybERURXEzc2ZobFkzSUY0LzdhM3VlSFZmSmhHZnNVWgo2SlRHMUZPOUxUb0V6Y1FXNUZFR3ltWlFnZGZrU3BYSkE4MzQwRFpZM0ZDMFNva3RqZ0dBTExKQ0tMaDJmNzZHClFJYkxWckhoc1FBbG9wcjhTai85Z2w4K081bERYMW9FSFUvenVxclZyNytZNmhPMFpoMWFSTXVYT1QzTUdmZ2cKejlMaWk1cTV0c0FJWGJJZDFUOU9HemNBY01qNFkwVC9oL1QxCi0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0K",
+        "namespace": "ZGVmYXVsdA==",
+        "token": "ZXlKaGJHY2lPaUpTVXpJMU5pSXNJbXRwWkNJNklpSjkuZXlKcGMzTWlPaUpyZFdKbGNtNWxkR1Z6TDNObGNuWnBZMlZoWTJOdmRXNTBJaXdpYTNWaVpYSnVaWFJsY3k1cGJ5OXpaWEoyYVdObFlXTmpiM1Z1ZEM5dVlXMWxjM0JoWTJVaU9pSmtaV1poZFd4MElpd2lhM1ZpWlhKdVpYUmxjeTVwYnk5elpYSjJhV05sWVdOamIzVnVkQzl6WldOeVpYUXVibUZ0WlNJNkluSnBaMmgwTFhkdmJHWXRjbUZpWW1sMGJYRXRhR0V0ZEc5clpXNHRaRGcwYlhJaUxDSnJkV0psY201bGRHVnpMbWx2TDNObGNuWnBZMlZoWTJOdmRXNTBMM05sY25acFkyVXRZV05qYjNWdWRDNXVZVzFsSWpvaWNtbG5hSFF0ZDI5c1ppMXlZV0ppYVhSdGNTMW9ZU0lzSW10MVltVnlibVYwWlhNdWFXOHZjMlZ5ZG1salpXRmpZMjkxYm5RdmMyVnlkbWxqWlMxaFkyTnZkVzUwTG5WcFpDSTZJak16WkRJeU1qWXlMVGc0WkdZdE1URmxPQzFoWldKa0xUQmhOVGhoWXpGbU1UWmpaQ0lzSW5OMVlpSTZJbk41YzNSbGJUcHpaWEoyYVdObFlXTmpiM1Z1ZERwa1pXWmhkV3gwT25KcFoyaDBMWGR2YkdZdGNtRmlZbWwwYlhFdGFHRWlmUS5LUW8yQnB4REs4akluZHhoV1AyclZ6V0FudW84RmtxNWgyNWJrbDlwNElKMW1MTDRmeDlfbzZvcGZPb3poT1BQQkRiM3VXUUNoWVJXbDNxM2dVVDJhQTlHMm5RcThCXzBHQjl2WXVUdWxaSnQ4VFdQYm5zUFJRVGJyU3lkSkx2YnBxbFlKQmRSM2tSUVlrVkJ3WjA5NXZCanJnMzRqOEtxVDlfeUY3TDVmakR0dWRveTZyMjQyZDU0aGJ0X2x2LWZ3eDExdFFZUEJCelB2djF6RHZCUnQ5TmU0UTRiZTNRMFoxc00yMDAtaUROLVdIcWlORmJlSVk0ZUc2Mkk4dnlyUVdLbWVEX0xPTDcwemtETlM3UHRBY1EwZWxRTFlsRkJLbkhNeWFvRllfVzUwRF85THhoREhyeHZTNllwUklZd25pZ2oza3BnWmZJblBQcUJxMkpSTFRuTjlmRjZQSVgwbU5xZGNlTG9ybjYwVlpKZ29HV29aVS15ZVFZT3NGOWFYRXN2NUkyRGxGUjRkT01IQlJQRVJMMnNPR09nVUNWZkNsbUZ3TG91YnhFemIyVFg5WjNSVWdfSHEzRTFycnlyWVN1V3lyY2JWLWROemJBN2RZNjdCSW1fYUtGX242Wkw5c1VveU1pYXZSY0tYOXgtRGZCQnhzTFdycUhlMHpETkpuWGd6MzdqNEw1WTV2bEw4akZxRWxibzlSUWlnQzJaZFczM2hlY3RPYTNMUzRUMVpXbDJnN2pfbTF3SXBZb3hvRkxoRWsyMUd3dTJRSm1OdWhZOVVZYm1lakRMdmNncVNuaTl3QnNtOUtVTlpxUVJWY0EybGxDZnVDeTNKSHFTc2JoRGtTQ3IzYkU2NUgzTGJLd1lWa3JGZWhfVE83bXY3ak1Cck1tWmxaRQ=="
+      },
+      "kind": "Secret",
+      "metadata": {
+        "annotations": {
+          "kubernetes.io/service-account.name": "right-wolf-rabbitmq-ha",
+          "kubernetes.io/service-account.uid": "33d22262-88df-11e8-aebd-0a58ac1f16cd"
+        },
+        "creationTimestamp": "2018-07-16T10:01:26Z",
+        "name": "right-wolf-rabbitmq-ha-token-d84mr",
+        "namespace": "$NAMESPACE",
+        "resourceVersion": "6525",
+        "selfLink": "/api/v1/namespaces/default/secrets/right-wolf-rabbitmq-ha-token-d84mr",
+        "uid": "33d9a067-88df-11e8-aebd-0a58ac1f16cd"
+      },
+      "type": "kubernetes.io/service-account-token"
+    },
+    {
+      "apiVersion": "v1",
+      "data": {
+        "rabbitmq-erlang-cookie": "b3JsSWExQlJ2RVpuRmRZTGptODdNdW9xcW5tVDcyY1o=",
+        "rabbitmq-password": "PDshRW9zOF46Y1IzZSV6JXlmViVVWVZx"
+      },
+      "kind": "Secret",
+      "metadata": {
+        "creationTimestamp": "2018-07-16T09:58:35Z",
+        "labels": {
+          "app": "rabbitmq-ha",
+          "chart": "rabbitmq-ha-1.6.3",
+          "heritage": "Tiller",
+          "release": "saucy-macaw"
+        },
+        "name": "saucy-macaw-rabbitmq-ha",
+        "namespace": "$NAMESPACE",
+        "resourceVersion": "6258",
+        "selfLink": "/api/v1/namespaces/default/secrets/saucy-macaw-rabbitmq-ha",
+        "uid": "cdfcb525-88de-11e8-aebd-0a58ac1f16cd"
+      },
+      "type": "Opaque"
+    },
+    {
+      "apiVersion": "v1",
+      "data": {
+        "ca.crt": "LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUV4ekNDQXErZ0F3SUJBZ0lRSkdhWngxaFRhVG10N1ZYaTlTKzVXekFOQmdrcWhraUc5dzBCQVFzRkFEQU4KTVFzd0NRWURWUVFERXdKallUQWVGdzB4T0RBM01UWXdPRFV5TVRWYUZ3MHlNREEzTVRVd09EVXlNVFZhTUEweApDekFKQmdOVkJBTVRBbU5oTUlJQ0lqQU5CZ2txaGtpRzl3MEJBUUVGQUFPQ0FnOEFNSUlDQ2dLQ0FnRUFzRG9ICkRTaTZrZ2xtOXI4UlBnT2duUFhzcmJaZTdFTFhOSkZkZmp1UEE5VWEvVmFZRXVKVndIdmorcDNsWHE1UUMxQVEKN2N1YnlZSHNzZzN4UjhmYk9VSFVyWXV4Y1hsWXFKWGprb1FuTy9wZDJjQnF2aC9yUVB6ckhEcW45cThHbHhDTgpEa3MrUVVLbG5XWStEWHNqb3VrbFpCdGkxc0JxTEwyZU85RDdlcFpGMDc2VXBZVFJWOXRsUlgrSVVJYXR5RFRuCi94WHFtcWZnNGFOUHQyNCsyZk1lV2lVSHJvZ1hRRzBCNnF3M2VUQThnRm9iUlpGUFJucm1pOGhVd2JYWm8xQ0MKUXBRck9pOFFZZ2tIU1RHcTFsM3pYdm5adDdTaDJEQnd6OXZpTFY3c0lqRGRtdFpJUXloQzZXNHJjQ1FSNUR0bQpSYlo2Qno0QklGb0tpWTQ2NStlU2JXNTZPVE9XcXlNVTErQWVlR1Q0Y2VPZlo2djdqZmFFRzB0bDUxNVoyL1psClpaT3AwclB1VTFPejArc0IrRWtudzBucjFMWFAwZWdqMERkQjh4UWpqaG42cFNUTHN5UmtSUlQ1L2tlOXgzMjIKQ1BKZGZ6YzRMK25tMWtOSU1XT3dtRi9TZStqWUFla2YzUzNVaGh2eXZuUVZRUTcxL1hkMW5vbGg0TUFGcUdJWQpGdmgxTW9Gc1BTcEprUjFJMEo5Y1dNYjZWYjRZUlZQUGJzZDFXYVJMRy94aVlYVjJ0N1ZoQ05TOEZjbC9XN2hiCmtNSVpjcm0yeFRTNk1RaXNZaGN2cVY3WkVaYlRhMjJLU25UMFA3VDcvU0ZJRXVMWUY5NjNZMWk0VlFQdk9sdVgKYU5qZk9kYStHVm5GaUhjNWhvR1MxL0hLa0lXTFN2VnY2aERsYWFNQ0F3RUFBYU1qTUNFd0RnWURWUjBQQVFILwpCQVFEQWdLa01BOEdBMVVkRXdFQi93UUZNQU1CQWY4d0RRWUpLb1pJaHZjTkFRRUxCUUFEZ2dJQkFGY1BsSHJJCnJQa1g4bmk4dk5Ma2NoNFdSY29TVkR5dEdkUzZQUjd6bWZTUE1OVWtHNnRjbDlCS0hDQ2J1T1ZpeDZyTEUrcTMKNzlCelFXYTNEOWp1OEphRmdVWjZveUxIQkN3RGFhVXI5YUhjVTBBZmRuSTVzRXBPbjBYcXQrcksrYnFiV2Y4ZgptMnl1QzIwNXFISEJ4Z2JtNm5zWDZPQmpSZ3AvL3pnT0hJT1BtZUVWR3JQL044VFFhS2VxNVc4am8yN0VBRGxtCkNSOW9NOFA0TC9TdG9XNy9CcEhDZ2FOckJ6T2NLRWJWZkdLSGU5UTZ5VTVKK1NHcER3NUh2aVV1M3gwRUEweU4KaUtVdmFkOFJVZzhxejlHR2lqZmJlTzVBeWlnanovVmFLUEhBRGlxc2o4YmdvbUpGMFRMS3JmaURrc201V1NqVApBbFVHRXQwbTBqQ2NSWVBWVzJoUkI1N0ZBck54VFkvQ1laemM5STFPQzZCWjRJLzh5WCtEd080REI0OXF3Z1BRCnFmTGZhUEdYcTlyM1M4blAyYVdZQldJUERndWY0SnZ5YUhqRGtpL0orYmlldkVuSURYeG00cDA5NFVJRkFOakIKVTJ6VkVhV3F6ZWtMQzYxZ0lYcFlMc21PQlJPcytnd2UybERURXEzc2ZobFkzSUY0LzdhM3VlSFZmSmhHZnNVWgo2SlRHMUZPOUxUb0V6Y1FXNUZFR3ltWlFnZGZrU3BYSkE4MzQwRFpZM0ZDMFNva3RqZ0dBTExKQ0tMaDJmNzZHClFJYkxWckhoc1FBbG9wcjhTai85Z2w4K081bERYMW9FSFUvenVxclZyNytZNmhPMFpoMWFSTXVYT1QzTUdmZ2cKejlMaWk1cTV0c0FJWGJJZDFUOU9HemNBY01qNFkwVC9oL1QxCi0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0K",
+        "namespace": "ZGVmYXVsdA==",
+        "token": "ZXlKaGJHY2lPaUpTVXpJMU5pSXNJbXRwWkNJNklpSjkuZXlKcGMzTWlPaUpyZFdKbGNtNWxkR1Z6TDNObGNuWnBZMlZoWTJOdmRXNTBJaXdpYTNWaVpYSnVaWFJsY3k1cGJ5OXpaWEoyYVdObFlXTmpiM1Z1ZEM5dVlXMWxjM0JoWTJVaU9pSmtaV1poZFd4MElpd2lhM1ZpWlhKdVpYUmxjeTVwYnk5elpYSjJhV05sWVdOamIzVnVkQzl6WldOeVpYUXVibUZ0WlNJNkluTmhkV041TFcxaFkyRjNMWEpoWW1KcGRHMXhMV2hoTFhSdmEyVnVMV2h1YUdScklpd2lhM1ZpWlhKdVpYUmxjeTVwYnk5elpYSjJhV05sWVdOamIzVnVkQzl6WlhKMmFXTmxMV0ZqWTI5MWJuUXVibUZ0WlNJNkluTmhkV041TFcxaFkyRjNMWEpoWW1KcGRHMXhMV2hoSWl3aWEzVmlaWEp1WlhSbGN5NXBieTl6WlhKMmFXTmxZV05qYjNWdWRDOXpaWEoyYVdObExXRmpZMjkxYm5RdWRXbGtJam9pWTJVeFpUYzFNV010T0Roa1pTMHhNV1U0TFdGbFltUXRNR0UxT0dGak1XWXhObU5rSWl3aWMzVmlJam9pYzNsemRHVnRPbk5sY25acFkyVmhZMk52ZFc1ME9tUmxabUYxYkhRNmMyRjFZM2t0YldGallYY3RjbUZpWW1sMGJYRXRhR0VpZlEuVl9UeC1OUkQtV2VQVWM4c3VsZFBYQ04zMXVYNjJVZkl0LUhSeTdiUjlZc082bUYwZkNrNTMwNWFfVk1ULWdUNDRHZm5abVFOZnM2WUE5MWw4SjVtcmVGQXFkMWpMTUhMemFVcVNwQ1hSVk9GZGVINTNNS1ZNSmhYOWtIc00zaUg1N0JFb2M1R1hTbC1Cd1owcnFkVGtuQ3dhczY1ZzNab01LSE5nZGM1M3ZoWG51WXBNR0xzUTVxLVRFLWlZcmxEd01QMFFDTkhaVEFsOWlBc1l6VlV1SU5udnEzSVZuVDBFNGR5OEhNa3lWZkRhakhTZmV3VG1nZE5lT0hGZjhubHlJQkl5ZDNoUWlpc09qMG9MNmNGSlpHOUM3ZkMwOUctdXhCV2djSWZXcjhNQzVEWmJxWTRfMTFVbFFJU2lrUEdhZ1RtcER3djdFM2dfM1NvOC1mWjY3TjlkTndJbDYtRUczYnUzNFNyWjg4YXBxT2RwaDFpYzR6MExrSGo0X3ZwOWhDWWI3SXFuT0NCLWR1NS03VHpadllmUEtqd2NfSV91WDc2TU5QelRfYUZLTDJnY0hCZ1RtZXU2a3RNTEkxX3c3dk43T3BVODVMR3ZIQTVfYVFuSWRFUFo4NEx6eUFMS0Q3dFo2aXNLR3hzdHh4QUJpUWs3dlczR3FMbEpFMHlULXp0R25oTlpjLXczZTJWSG83bjNoUUs3c1VhSm5JWmhCZjZnbHJpM3gxRENaczJjYi1WT3licTBMVHpZTUY5YXkwSkx2MGpEUlRvYm1tdnhzZms1cjRFOEVFSWMzUTRfYWo5dWdpWTdMV09qVXQ4eWlGWWtfdVI0SkYtMl8tTTBzYUJ1RUVXcUUxSEczRzBWVnk2MjVnSTVZbjFnSGdyeEpDV0VwYXBYbm8="
+      },
+      "kind": "Secret",
+      "metadata": {
+        "annotations": {
+          "kubernetes.io/service-account.name": "saucy-macaw-rabbitmq-ha",
+          "kubernetes.io/service-account.uid": "ce1e751c-88de-11e8-aebd-0a58ac1f16cd"
+        },
+        "creationTimestamp": "2018-07-16T09:58:35Z",
+        "name": "saucy-macaw-rabbitmq-ha-token-hnhdk",
+        "namespace": "$NAMESPACE",
+        "resourceVersion": "6262",
+        "selfLink": "/api/v1/namespaces/default/secrets/saucy-macaw-rabbitmq-ha-token-hnhdk",
+        "uid": "ce26b83f-88de-11e8-aebd-0a58ac1f16cd"
+      },
+      "type": "kubernetes.io/service-account-token"
+    },
+    {
+      "apiVersion": "v1",
+      "data": {
+        ".dockerconfigjson": "eyJhdXRocyI6eyJ0ZWFtNnNreTE4MDdyZWdpc3RyeS5henVyZWNyLmlvIjp7InVzZXJuYW1lIjoidGVhbTZTS1kxODA3cmVnaXN0cnkiLCJwYXNzd29yZCI6InlDYXcrU00vYkF4VUxjaj0zOTNOPVNHWFY4NlAyc1ZsIiwiYXV0aCI6ImRHVmhiVFpUUzFreE9EQTNjbVZuYVhOMGNuazZlVU5oZHl0VFRTOWlRWGhWVEdOcVBUTTVNMDQ5VTBkWVZqZzJVREp6Vm13PSJ9fX0="
+      },
+      "kind": "Secret",
+      "metadata": {
+        "creationTimestamp": "2018-07-16T12:56:09Z",
+        "name": "team-6-reg-cred",
+        "namespace": "$NAMESPACE",
+        "resourceVersion": "23820",
+        "selfLink": "/api/v1/namespaces/default/secrets/team-6-reg-cred",
+        "uid": "9c6f58fe-88f7-11e8-aebd-0a58ac1f16cd"
+      },
+      "type": "kubernetes.io/dockerconfigjson"
+    }
+  ],
+  "kind": "List",
+  "metadata": {
+    "resourceVersion": "",
+    "selfLink": ""
+  }
+}
