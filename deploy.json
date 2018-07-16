@@ -804,7 +804,6 @@
           "pod-template-hash": "3565749112"
         },
         "name": "capture-order-api-79b9c8f556",
-        "namespace": "$NAMESPACE",
         "ownerReferences": [
           {
             "apiVersion": "extensions/v1beta1",
@@ -898,7 +897,6 @@
           "pod-template-hash": "3708376220"
         },
         "name": "capture-order-api-7c4d7cb664",
-        "namespace": "$NAMESPACE",
         "ownerReferences": [
           {
             "apiVersion": "extensions/v1beta1",
@@ -987,7 +985,6 @@
           "pod-template-hash": "4113396223"
         },
         "name": "capture-order-api-85577fb667",
-        "namespace": "$NAMESPACE",
         "ownerReferences": [
           {
             "apiVersion": "extensions/v1beta1",
@@ -1076,7 +1073,6 @@
           "pod-template-hash": "920577166"
         },
         "name": "capture-order-api-f649cc5bb",
-        "namespace": "$NAMESPACE",
         "ownerReferences": [
           {
             "apiVersion": "extensions/v1beta1",
@@ -1167,6 +1163,105 @@
         "annotations": {
           "deployment.kubernetes.io/desired-replicas": "1",
           "deployment.kubernetes.io/max-replicas": "2",
+          "deployment.kubernetes.io/revision": "4"
+        },
+        "creationTimestamp": "2018-07-16T14:30:05Z",
+        "generation": 1,
+        "labels": {
+          "k8s-app": "eventlistener-eventhub",
+          "pod-template-hash": "2810364337"
+        },
+        "name": "eventlistener-eventhub-6d547b877c",
+        "ownerReferences": [
+          {
+            "apiVersion": "extensions/v1beta1",
+            "blockOwnerDeletion": true,
+            "controller": true,
+            "kind": "Deployment",
+            "name": "eventlistener-eventhub",
+            "uid": "13cfa281-8902-11e8-aebd-0a58ac1f16cd"
+          }
+        ],
+        "resourceVersion": "34375",
+        "selfLink": "/apis/extensions/v1beta1/namespaces/default/replicasets/eventlistener-eventhub-6d547b877c",
+        "uid": "bba98569-8904-11e8-aebd-0a58ac1f16cd"
+      },
+      "spec": {
+        "replicas": 1,
+        "selector": {
+          "matchLabels": {
+            "k8s-app": "eventlistener-eventhub",
+            "pod-template-hash": "2810364337"
+          }
+        },
+        "template": {
+          "metadata": {
+            "creationTimestamp": null,
+            "labels": {
+              "k8s-app": "eventlistener-eventhub",
+              "pod-template-hash": "2810364337"
+            },
+            "name": "eventlistener-eventhub"
+          },
+          "spec": {
+            "containers": [
+              {
+                "env": [
+                  {
+                    "name": "EVENTHUBCONNSTRING",
+                    "value": "Endpoint=sb://k8s-challenge-sky-team6.servicebus.windows.net/;SharedAccessKeyName=SendListenKey;SharedAccessKey=P8KeegRQF4wPTVbghSK0hbiNW5Y3T0AUGTgzISss2Yk="
+                  },
+                  {
+                    "name": "EVENTHUBPATH",
+                    "value": "k8s-event-hub"
+                  },
+                  {
+                    "name": "TEAMNAME",
+                    "value": "team6-SKY1807"
+                  },
+                  {
+                    "name": "PROCESSENDPOINT",
+                    "value": "http://order-fulfill-api.default/v1/order"
+                  },
+                  {
+                    "name": "PARTITIONKEY",
+                    "value": "0"
+                  }
+                ],
+                "image": "shanepeckham/eventhublistenerack:v8",
+                "imagePullPolicy": "Always",
+                "name": "eventlistener-eventhub",
+                "resources": {},
+                "securityContext": {
+                  "privileged": false
+                },
+                "terminationMessagePath": "/dev/termination-log",
+                "terminationMessagePolicy": "File"
+              }
+            ],
+            "dnsPolicy": "ClusterFirst",
+            "restartPolicy": "Always",
+            "schedulerName": "default-scheduler",
+            "securityContext": {},
+            "terminationGracePeriodSeconds": 30
+          }
+        }
+      },
+      "status": {
+        "availableReplicas": 1,
+        "fullyLabeledReplicas": 1,
+        "observedGeneration": 1,
+        "readyReplicas": 1,
+        "replicas": 1
+      }
+    },
+    {
+      "apiVersion": "extensions/v1beta1",
+      "kind": "ReplicaSet",
+      "metadata": {
+        "annotations": {
+          "deployment.kubernetes.io/desired-replicas": "1",
+          "deployment.kubernetes.io/max-replicas": "2",
           "deployment.kubernetes.io/revision": "2"
         },
         "creationTimestamp": "2018-07-16T14:11:39Z",
@@ -1176,7 +1271,6 @@
           "pod-template-hash": "3242990381"
         },
         "name": "eventlistener-eventhub-7686ff47d5",
-        "namespace": "$NAMESPACE",
         "ownerReferences": [
           {
             "apiVersion": "extensions/v1beta1",
@@ -1262,14 +1356,13 @@
           "deployment.kubernetes.io/max-replicas": "2",
           "deployment.kubernetes.io/revision": "3"
         },
-        "creationTimestamp": "2018-07-16T14:19:50Z",
-        "generation": 1,
+        "creationTimestamp": "2018-07-16T14:28:24Z",
+        "generation": 2,
         "labels": {
           "k8s-app": "eventlistener-eventhub",
           "pod-template-hash": "4017647278"
         },
         "name": "eventlistener-eventhub-845cb8c6cd",
-        "namespace": "$NAMESPACE",
         "ownerReferences": [
           {
             "apiVersion": "extensions/v1beta1",
@@ -1280,12 +1373,12 @@
             "uid": "13cfa281-8902-11e8-aebd-0a58ac1f16cd"
           }
         ],
-        "resourceVersion": "33149",
+        "resourceVersion": "34382",
         "selfLink": "/apis/extensions/v1beta1/namespaces/default/replicasets/eventlistener-eventhub-845cb8c6cd",
-        "uid": "4d0191dd-8903-11e8-aebd-0a58ac1f16cd"
+        "uid": "7fa722e8-8904-11e8-aebd-0a58ac1f16cd"
       },
       "spec": {
-        "replicas": 1,
+        "replicas": 0,
         "selector": {
           "matchLabels": {
             "k8s-app": "eventlistener-eventhub",
@@ -1346,11 +1439,8 @@
         }
       },
       "status": {
-        "availableReplicas": 1,
-        "fullyLabeledReplicas": 1,
-        "observedGeneration": 1,
-        "readyReplicas": 1,
-        "replicas": 1
+        "observedGeneration": 2,
+        "replicas": 0
       }
     },
     {
@@ -1369,7 +1459,6 @@
           "pod-template-hash": "4067218763"
         },
         "name": "eventlistener-eventhub-84bc65dcb7",
-        "namespace": "$NAMESPACE",
         "ownerReferences": [
           {
             "apiVersion": "extensions/v1beta1",
@@ -1466,7 +1555,6 @@
           "release": "jenkins"
         },
         "name": "jenkins-6ddfb47bc6",
-        "namespace": "$NAMESPACE",
         "ownerReferences": [
           {
             "apiVersion": "extensions/v1beta1",
@@ -1477,7 +1565,7 @@
             "uid": "70aa320b-8903-11e8-aebd-0a58ac1f16cd"
           }
         ],
-        "resourceVersion": "33787",
+        "resourceVersion": "34920",
         "selfLink": "/apis/extensions/v1beta1/namespaces/default/replicasets/jenkins-6ddfb47bc6",
         "uid": "70ac77a7-8903-11e8-aebd-0a58ac1f16cd"
       },
@@ -1700,7 +1788,6 @@
           "run": "load-generator"
         },
         "name": "load-generator-7bbbb4fdd4",
-        "namespace": "$NAMESPACE",
         "ownerReferences": [
           {
             "apiVersion": "extensions/v1beta1",
@@ -1781,7 +1868,6 @@
           "pod-template-hash": "1640257209"
         },
         "name": "order-fulfill-api-5b8469c64f",
-        "namespace": "$NAMESPACE",
         "ownerReferences": [
           {
             "apiVersion": "extensions/v1beta1",
@@ -1885,7 +1971,6 @@
           "pod-template-hash": "2031716541"
         },
         "name": "order-fulfill-api-6475c5b985",
-        "namespace": "$NAMESPACE",
         "ownerReferences": [
           {
             "apiVersion": "extensions/v1beta1",
@@ -1988,7 +2073,6 @@
           "pod-template-hash": "2597922629"
         },
         "name": "order-fulfill-api-69fcf66b6f",
-        "namespace": "$NAMESPACE",
         "ownerReferences": [
           {
             "apiVersion": "extensions/v1beta1",
@@ -2077,7 +2161,6 @@
           "pod-template-hash": "2702989149"
         },
         "name": "order-fulfill-api-6c46fdf58f",
-        "namespace": "$NAMESPACE",
         "ownerReferences": [
           {
             "apiVersion": "extensions/v1beta1",
@@ -2180,7 +2263,6 @@
           "pod-template-hash": "946870188"
         },
         "name": "order-fulfill-api-f8bdc45dd",
-        "namespace": "$NAMESPACE",
         "ownerReferences": [
           {
             "apiVersion": "extensions/v1beta1",
@@ -2290,7 +2372,6 @@
           "release": "affable-pike"
         },
         "name": "affable-pike-rabbitmq-ha",
-        "namespace": "$NAMESPACE",
         "resourceVersion": "6196",
         "selfLink": "/api/v1/namespaces/default/secrets/affable-pike-rabbitmq-ha",
         "uid": "b6fb92d6-88de-11e8-aebd-0a58ac1f16cd"
@@ -2312,7 +2393,6 @@
         },
         "creationTimestamp": "2018-07-16T09:57:57Z",
         "name": "affable-pike-rabbitmq-ha-token-8pfmw",
-        "namespace": "$NAMESPACE",
         "resourceVersion": "6199",
         "selfLink": "/api/v1/namespaces/default/secrets/affable-pike-rabbitmq-ha-token-8pfmw",
         "uid": "b70ecce8-88de-11e8-aebd-0a58ac1f16cd"
@@ -2329,7 +2409,6 @@
       "metadata": {
         "creationTimestamp": "2018-07-16T13:12:34Z",
         "name": "azure-storage-account-fdcd3875788f911e8a27d0a-secret",
-        "namespace": "$NAMESPACE",
         "resourceVersion": "25437",
         "selfLink": "/api/v1/namespaces/default/secrets/azure-storage-account-fdcd3875788f911e8a27d0a-secret",
         "uid": "e79ddb02-88f9-11e8-aebd-0a58ac1f16cd"
@@ -2351,7 +2430,6 @@
           "release": "brazen-bobcat"
         },
         "name": "brazen-bobcat-mongodb",
-        "namespace": "$NAMESPACE",
         "resourceVersion": "1503",
         "selfLink": "/api/v1/namespaces/default/secrets/brazen-bobcat-mongodb",
         "uid": "0f45aa05-88d8-11e8-aebd-0a58ac1f16cd"
@@ -2373,7 +2451,6 @@
         },
         "creationTimestamp": "2018-07-16T09:02:00Z",
         "name": "default-token-jqw22",
-        "namespace": "$NAMESPACE",
         "resourceVersion": "143",
         "selfLink": "/api/v1/namespaces/default/secrets/default-token-jqw22",
         "uid": "e694553f-88d6-11e8-aebd-0a58ac1f16cd"
@@ -2396,7 +2473,6 @@
           "release": "eponymous-horse"
         },
         "name": "eponymous-horse-rabbitmq-ha",
-        "namespace": "$NAMESPACE",
         "resourceVersion": "7327",
         "selfLink": "/api/v1/namespaces/default/secrets/eponymous-horse-rabbitmq-ha",
         "uid": "eb4e0284-88df-11e8-aebd-0a58ac1f16cd"
@@ -2418,7 +2494,6 @@
         },
         "creationTimestamp": "2018-07-16T10:06:34Z",
         "name": "eponymous-horse-rabbitmq-ha-token-dc88f",
-        "namespace": "$NAMESPACE",
         "resourceVersion": "7330",
         "selfLink": "/api/v1/namespaces/default/secrets/eponymous-horse-rabbitmq-ha-token-dc88f",
         "uid": "eb649d71-88df-11e8-aebd-0a58ac1f16cd"
@@ -2441,7 +2516,6 @@
           "release": "gauche-abalone"
         },
         "name": "gauche-abalone-rabbitmq",
-        "namespace": "$NAMESPACE",
         "resourceVersion": "6309",
         "selfLink": "/api/v1/namespaces/default/secrets/gauche-abalone-rabbitmq",
         "uid": "e024b8fa-88de-11e8-aebd-0a58ac1f16cd"
@@ -2463,7 +2537,6 @@
         },
         "creationTimestamp": "2018-07-16T09:59:06Z",
         "name": "gauche-abalone-rabbitmq-token-t8gfj",
-        "namespace": "$NAMESPACE",
         "resourceVersion": "6312",
         "selfLink": "/api/v1/namespaces/default/secrets/gauche-abalone-rabbitmq-token-t8gfj",
         "uid": "e03a98d2-88de-11e8-aebd-0a58ac1f16cd"
@@ -2486,7 +2559,6 @@
           "release": "jenkins"
         },
         "name": "jenkins",
-        "namespace": "$NAMESPACE",
         "resourceVersion": "33271",
         "selfLink": "/api/v1/namespaces/default/secrets/jenkins",
         "uid": "70478587-8903-11e8-aebd-0a58ac1f16cd"
@@ -2509,7 +2581,6 @@
           "release": "kindred-hamster"
         },
         "name": "kindred-hamster-rabbitmq-ha",
-        "namespace": "$NAMESPACE",
         "resourceVersion": "7028",
         "selfLink": "/api/v1/namespaces/default/secrets/kindred-hamster-rabbitmq-ha",
         "uid": "9f3e6ab0-88df-11e8-aebd-0a58ac1f16cd"
@@ -2531,7 +2602,6 @@
         },
         "creationTimestamp": "2018-07-16T10:04:26Z",
         "name": "kindred-hamster-rabbitmq-ha-token-444kb",
-        "namespace": "$NAMESPACE",
         "resourceVersion": "7031",
         "selfLink": "/api/v1/namespaces/default/secrets/kindred-hamster-rabbitmq-ha-token-444kb",
         "uid": "9f5152d4-88df-11e8-aebd-0a58ac1f16cd"
@@ -2554,7 +2624,6 @@
           "release": "opining-ibex"
         },
         "name": "opining-ibex-rabbitmq-ha",
-        "namespace": "$NAMESPACE",
         "resourceVersion": "7492",
         "selfLink": "/api/v1/namespaces/default/secrets/opining-ibex-rabbitmq-ha",
         "uid": "2c39a9b9-88e0-11e8-aebd-0a58ac1f16cd"
@@ -2576,7 +2645,6 @@
         },
         "creationTimestamp": "2018-07-16T10:08:23Z",
         "name": "opining-ibex-rabbitmq-ha-token-6lnjd",
-        "namespace": "$NAMESPACE",
         "resourceVersion": "7495",
         "selfLink": "/api/v1/namespaces/default/secrets/opining-ibex-rabbitmq-ha-token-6lnjd",
         "uid": "2c50a300-88e0-11e8-aebd-0a58ac1f16cd"
@@ -2599,7 +2667,6 @@
           "release": "right-wolf"
         },
         "name": "right-wolf-rabbitmq-ha",
-        "namespace": "$NAMESPACE",
         "resourceVersion": "6522",
         "selfLink": "/api/v1/namespaces/default/secrets/right-wolf-rabbitmq-ha",
         "uid": "33c80fb8-88df-11e8-aebd-0a58ac1f16cd"
@@ -2621,7 +2688,6 @@
         },
         "creationTimestamp": "2018-07-16T10:01:26Z",
         "name": "right-wolf-rabbitmq-ha-token-d84mr",
-        "namespace": "$NAMESPACE",
         "resourceVersion": "6525",
         "selfLink": "/api/v1/namespaces/default/secrets/right-wolf-rabbitmq-ha-token-d84mr",
         "uid": "33d9a067-88df-11e8-aebd-0a58ac1f16cd"
@@ -2644,7 +2710,6 @@
           "release": "saucy-macaw"
         },
         "name": "saucy-macaw-rabbitmq-ha",
-        "namespace": "$NAMESPACE",
         "resourceVersion": "6258",
         "selfLink": "/api/v1/namespaces/default/secrets/saucy-macaw-rabbitmq-ha",
         "uid": "cdfcb525-88de-11e8-aebd-0a58ac1f16cd"
@@ -2666,7 +2731,6 @@
         },
         "creationTimestamp": "2018-07-16T09:58:35Z",
         "name": "saucy-macaw-rabbitmq-ha-token-hnhdk",
-        "namespace": "$NAMESPACE",
         "resourceVersion": "6262",
         "selfLink": "/api/v1/namespaces/default/secrets/saucy-macaw-rabbitmq-ha-token-hnhdk",
         "uid": "ce26b83f-88de-11e8-aebd-0a58ac1f16cd"
@@ -2682,7 +2746,6 @@
       "metadata": {
         "creationTimestamp": "2018-07-16T12:56:09Z",
         "name": "team-6-reg-cred",
-        "namespace": "$NAMESPACE",
         "resourceVersion": "23820",
         "selfLink": "/api/v1/namespaces/default/secrets/team-6-reg-cred",
         "uid": "9c6f58fe-88f7-11e8-aebd-0a58ac1f16cd"
